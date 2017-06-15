@@ -1,0 +1,60 @@
+0    [main] INFO  org.linqs.psl.config.ConfigManager  - Configuration file loaded: file:/soe/nkini/pslprograms/transitivity/target/classes/psl.properties
+53   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.experiment.name. Returning default of default.
+59   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.experiment.dbpath. Returning default of /tmp.
+59   [main] INFO  org.linqs.psl.config.ConfigManager  - Found value data for option transitivity.experiment.data.path.
+71   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.experiment.output.outputdir. Returning default of output/default.
+77   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.model.weights.lived. Returning default of 20.
+78   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.model.weights.transitivity. Returning default of 20.
+78   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.model.weights.transitivity. Returning default of 20.
+78   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.model.weights.prior. Returning default of 5.
+79   [main] INFO  org.linqs.psl.config.ConfigManager  - Found value true for option transitivity.model.rule.transitivity.
+79   [main] INFO  org.linqs.psl.config.ConfigManager  - Found value false for option transitivity.model.rule.symmetry.
+234  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.rdbmsdatastore.valuecolumn. Returning default of truth.
+235  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.rdbmsdatastore.confidencecolumn. Returning default of confidence.
+235  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.rdbmsdatastore.partitioncolumn. Returning default of partition.
+253  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.rdbmsdatastore.usestringids. Returning default of true.
+256  [main] DEBUG org.linqs.psl.database.rdbms.RDBMSDataStore  - Registered 0 pre-existing predicates from RDBMS.
+325  [main] INFO  org.linqs.psl.experiments.Transitivity  - Running experiment default
+328  [main] WARN  org.linqs.psl.database.rdbms.RDBMSDataStoreMetadata  - Determining max partition, no partitions found null
+359  [main] INFO  org.linqs.psl.experiments.Transitivity  - Defining model rules
+409  [main] DEBUG org.linqs.psl.experiments.Transitivity  - model: Model:
+20.0: ( SIMILAR(P1, P2) & (P1 != P2) ) >> SAME(P1, P2) ^2
+20.0: ( ( SAME(P1, P2) & SAME(P2, P3) ) & (P1 != P3) ) >> SAME(P1, P3) ^2
+5.0: ~( SAME(P1, P2) ) ^2
+410  [main] INFO  org.linqs.psl.experiments.Transitivity  - Loading data into database
+430  [main] INFO  org.linqs.psl.experiments.Transitivity  - Starting inference
+485  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.mpeinference.reasoner. Returning default of org.linqs.psl.reasoner.admm.ADMMReasonerFactory@4d6025c5.
+485  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.maxiterations. Returning default of 25000.
+485  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.stepsize. Returning default of 1.0.
+485  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.stopcheck. Returning default of 1.
+486  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.epsilonabs. Returning default of 1.0E-5.
+486  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.epsilonrel. Returning default of 0.001.
+486  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.numthreads. Returning default of 4.
+486  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.mpeinference.termstore. Returning default of org.linqs.psl.reasoner.admm.term.ADMMTermStore.
+486  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmmemorytermstore.internalstore. Returning default of org.linqs.psl.reasoner.term.MemoryTermStore.
+487  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.memorytermstore.initialsize. Returning default of 5000.
+487  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.mpeinference.groundrulestore. Returning default of org.linqs.psl.application.groundrulestore.MemoryGroundRuleStore.
+490  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.mpeinference.termgenerator. Returning default of org.linqs.psl.reasoner.admm.term.ADMMTermGenerator.
+492  [main] DEBUG org.linqs.psl.application.inference.MPEInference  - Creating persisted atom mannager.
+496  [main] INFO  org.linqs.psl.application.inference.MPEInference  - Grounding out model.
+523  [main] DEBUG org.linqs.psl.model.rule.logical.AbstractLogicalRule  - Grounding 20.0: ( SIMILAR(P1, P2) & (P1 != P2) ) >> SAME(P1, P2) ^2
+527  [main] DEBUG org.linqs.psl.model.rule.logical.AbstractLogicalRule  - Grounded 6 instances of rule 20.0: ( SIMILAR(P1, P2) & (P1 != P2) ) >> SAME(P1, P2) ^2
+530  [main] DEBUG org.linqs.psl.model.rule.logical.AbstractLogicalRule  - Grounding 20.0: ( ( SAME(P1, P2) & SAME(P2, P3) ) & (P1 != P3) ) >> SAME(P1, P3) ^2
+530  [main] DEBUG org.linqs.psl.model.rule.logical.AbstractLogicalRule  - Grounded 6 instances of rule 20.0: ( ( SAME(P1, P2) & SAME(P2, P3) ) & (P1 != P3) ) >> SAME(P1, P3) ^2
+531  [main] DEBUG org.linqs.psl.model.rule.logical.AbstractLogicalRule  - Grounding 5.0: ~( SAME(P1, P2) ) ^2
+531  [main] DEBUG org.linqs.psl.model.rule.logical.AbstractLogicalRule  - Grounded 6 instances of rule 5.0: ~( SAME(P1, P2) ) ^2
+531  [main] DEBUG org.linqs.psl.application.inference.MPEInference  - Initializing objective terms for 18 ground rules.
+537  [main] DEBUG org.linqs.psl.application.inference.MPEInference  - Generated 18 objective terms from 18 ground rules.
+538  [main] INFO  org.linqs.psl.application.inference.MPEInference  - Beginning inference.
+538  [main] DEBUG org.linqs.psl.reasoner.admm.ADMMReasoner  - Performing optimization with 6 variables and 18 terms.
+606  [main] INFO  org.linqs.psl.reasoner.admm.ADMMReasoner  - Optimization completed in 202 iterations. Primal res.: 0.001984495573887919, Dual res.: 3.07259747488674E-5
+606  [main] INFO  org.linqs.psl.application.inference.MPEInference  - Inference complete. Writing results to Database.
+606  [main] DEBUG org.linqs.psl.application.inference.MPEInference  - Master inference complete.
+606  [main] DEBUG org.linqs.psl.application.inference.MPEInference  - Stats -- Memory (Bytes): 103437600, Terms: 18, Global Variables: 6 Local Variables: 30
+627  [main] INFO  org.linqs.psl.experiments.Transitivity  - Finished inference in 0.188 seconds
+DiscretePredictionStatistics.compare took 15 milliseconds
+ContinuousPredictionStatistics.compare took 0 milliseconds
+689  [main] INFO  org.linqs.psl.experiments.Transitivity  - MSE: 0.5749698419129775
+692  [main] INFO  org.linqs.psl.experiments.Transitivity  - Accuracy 0.16666666666666666, Error 5.0
+693  [main] INFO  org.linqs.psl.experiments.Transitivity  - Positive Class: precision 1.0, recall 0.16666666666666666
+693  [main] INFO  org.linqs.psl.experiments.Transitivity  - Negative Class Stats: precision 0.0, recall 1.0
