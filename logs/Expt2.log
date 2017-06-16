@@ -1,0 +1,389 @@
+0    [main] INFO  org.linqs.psl.config.ConfigManager  - Configuration file loaded: file:/soe/nkini/pslprograms/transitivity/target/classes/psl.properties
+59   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.experiment.name. Returning default of default.
+64   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.experiment.dbpath. Returning default of /tmp.
+64   [main] INFO  org.linqs.psl.config.ConfigManager  - Found value data for option transitivity.experiment.data.path.
+74   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.experiment.output.outputdir. Returning default of output/default.
+83   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.model.weights.lived. Returning default of 20.
+83   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.model.weights.transitivity. Returning default of 20.
+83   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.model.weights.transitivity. Returning default of 20.
+84   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.model.weights.prior. Returning default of 5.
+84   [main] INFO  org.linqs.psl.config.ConfigManager  - Found value true for option transitivity.model.rule.transitivity.
+85   [main] INFO  org.linqs.psl.config.ConfigManager  - Found value true for option transitivity.model.rule.symmetry.
+254  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.rdbmsdatastore.valuecolumn. Returning default of truth.
+254  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.rdbmsdatastore.confidencecolumn. Returning default of confidence.
+254  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.rdbmsdatastore.partitioncolumn. Returning default of partition.
+273  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.rdbmsdatastore.usestringids. Returning default of true.
+277  [main] DEBUG org.linqs.psl.database.rdbms.RDBMSDataStore  - Registered 0 pre-existing predicates from RDBMS.
+356  [main] INFO  org.linqs.psl.experiments.Transitivity  - Running experiment default
+359  [main] WARN  org.linqs.psl.database.rdbms.RDBMSDataStoreMetadata  - Determining max partition, no partitions found null
+393  [main] INFO  org.linqs.psl.experiments.Transitivity  - Defining model rules
+529  [main] DEBUG org.linqs.psl.experiments.Transitivity  - model: Model:
+20.0: ( SIMILAR(P1, P2) & (P1 != P2) ) >> SAME(P1, P2) ^2
+20.0: ( ( SAME(P1, P2) & SAME(P2, P3) ) & (P1 != P3) ) >> SAME(P1, P3) ^2
+20.0: SAME(P1, P2) >> SAME(P2, P1) ^2
+5.0: ~( SAME(P1, P2) ) ^2
+529  [main] INFO  org.linqs.psl.experiments.Transitivity  - Loading data into database
+577  [main] INFO  org.linqs.psl.experiments.Transitivity  - Starting inference
+629  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.mpeinference.reasoner. Returning default of org.linqs.psl.reasoner.admm.ADMMReasonerFactory@407a7f2a.
+630  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.maxiterations. Returning default of 25000.
+630  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.stepsize. Returning default of 1.0.
+630  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.stopcheck. Returning default of 1.
+630  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.epsilonabs. Returning default of 1.0E-5.
+630  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.epsilonrel. Returning default of 0.001.
+630  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.numthreads. Returning default of 4.
+631  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.mpeinference.termstore. Returning default of org.linqs.psl.reasoner.admm.term.ADMMTermStore.
+631  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmmemorytermstore.internalstore. Returning default of org.linqs.psl.reasoner.term.MemoryTermStore.
+632  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.memorytermstore.initialsize. Returning default of 5000.
+632  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.mpeinference.groundrulestore. Returning default of org.linqs.psl.application.groundrulestore.MemoryGroundRuleStore.
+635  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.mpeinference.termgenerator. Returning default of org.linqs.psl.reasoner.admm.term.ADMMTermGenerator.
+637  [main] DEBUG org.linqs.psl.application.inference.MPEInference  - Creating persisted atom mannager.
+644  [main] INFO  org.linqs.psl.application.inference.MPEInference  - Grounding out model.
+Grounding 20.0: ( SIMILAR(P1, P2) & (P1 != P2) ) >> SAME(P1, P2) ^2
+DNF: SIMILAR(P1, P2) & (P1 != P2) & ~SAME(P1, P2)
+PosLit: SIMILAR('B', 'A'): 0.3
+PosLit: ('B' != 'A'): 1.0
+NegLit: SAME('B', 'A'): 0.0
+This ground rule was added
+PosLit: SIMILAR('C', 'B'): 0.8
+PosLit: ('C' != 'B'): 1.0
+NegLit: SAME('C', 'B'): 0.0
+This ground rule was added
+PosLit: SIMILAR('A', 'B'): 0.3
+PosLit: ('A' != 'B'): 1.0
+NegLit: SAME('A', 'B'): 0.0
+This ground rule was added
+PosLit: SIMILAR('A', 'C'): 0.5
+PosLit: ('A' != 'C'): 1.0
+NegLit: SAME('A', 'C'): 0.0
+This ground rule was added
+PosLit: SIMILAR('B', 'C'): 0.8
+PosLit: ('B' != 'C'): 1.0
+NegLit: SAME('B', 'C'): 0.0
+This ground rule was added
+PosLit: SIMILAR('C', 'A'): 0.5
+PosLit: ('C' != 'A'): 1.0
+NegLit: SAME('C', 'A'): 0.0
+This ground rule was added
+663  [main] DEBUG org.linqs.psl.model.rule.logical.AbstractLogicalRule  - Grounded 6 instances of rule 20.0: ( SIMILAR(P1, P2) & (P1 != P2) ) >> SAME(P1, P2) ^2
+Grounding 20.0: ( ( SAME(P1, P2) & SAME(P2, P3) ) & (P1 != P3) ) >> SAME(P1, P3) ^2
+DNF: (P1 != P3) & SAME(P2, P3) & SAME(P1, P2) & ~SAME(P1, P3)
+PosLit: ('B' != 'C'): 1.0
+PosLit: SAME('A', 'C'): 1.0
+PosLit: SAME('B', 'A'): 1.0
+NegLit: SAME('B', 'C'): 0.0
+This ground rule was added
+PosLit: ('A' != 'B'): 1.0
+PosLit: SAME('C', 'B'): 1.0
+PosLit: SAME('A', 'C'): 1.0
+NegLit: SAME('A', 'B'): 0.0
+This ground rule was added
+PosLit: ('C' != 'B'): 1.0
+PosLit: SAME('A', 'B'): 1.0
+PosLit: SAME('C', 'A'): 1.0
+NegLit: SAME('C', 'B'): 0.0
+This ground rule was added
+PosLit: ('B' != 'A'): 1.0
+PosLit: SAME('C', 'A'): 1.0
+PosLit: SAME('B', 'C'): 1.0
+NegLit: SAME('B', 'A'): 0.0
+This ground rule was added
+PosLit: ('C' != 'A'): 1.0
+PosLit: SAME('B', 'A'): 1.0
+PosLit: SAME('C', 'B'): 1.0
+NegLit: SAME('C', 'A'): 0.0
+This ground rule was added
+PosLit: ('A' != 'C'): 1.0
+PosLit: SAME('B', 'C'): 1.0
+PosLit: SAME('A', 'B'): 1.0
+NegLit: SAME('A', 'C'): 0.0
+This ground rule was added
+669  [main] DEBUG org.linqs.psl.model.rule.logical.AbstractLogicalRule  - Grounded 6 instances of rule 20.0: ( ( SAME(P1, P2) & SAME(P2, P3) ) & (P1 != P3) ) >> SAME(P1, P3) ^2
+Grounding 20.0: SAME(P1, P2) >> SAME(P2, P1) ^2
+DNF: SAME(P1, P2) & ~SAME(P2, P1)
+PosLit: SAME('B', 'A'): 1.0
+NegLit: SAME('A', 'B'): 0.0
+This ground rule was added
+PosLit: SAME('C', 'B'): 1.0
+NegLit: SAME('B', 'C'): 0.0
+This ground rule was added
+PosLit: SAME('A', 'B'): 1.0
+NegLit: SAME('B', 'A'): 0.0
+This ground rule was added
+PosLit: SAME('B', 'C'): 1.0
+NegLit: SAME('C', 'B'): 0.0
+This ground rule was added
+PosLit: SAME('A', 'C'): 1.0
+NegLit: SAME('C', 'A'): 0.0
+This ground rule was added
+PosLit: SAME('C', 'A'): 1.0
+NegLit: SAME('A', 'C'): 0.0
+This ground rule was added
+673  [main] DEBUG org.linqs.psl.model.rule.logical.AbstractLogicalRule  - Grounded 6 instances of rule 20.0: SAME(P1, P2) >> SAME(P2, P1) ^2
+Grounding 5.0: ~( SAME(P1, P2) ) ^2
+DNF: SAME(P1, P2)
+PosLit: SAME('B', 'A'): 1.0
+This ground rule was added
+PosLit: SAME('C', 'B'): 1.0
+This ground rule was added
+PosLit: SAME('A', 'B'): 1.0
+This ground rule was added
+PosLit: SAME('B', 'C'): 1.0
+This ground rule was added
+PosLit: SAME('A', 'C'): 1.0
+This ground rule was added
+PosLit: SAME('C', 'A'): 1.0
+This ground rule was added
+675  [main] DEBUG org.linqs.psl.model.rule.logical.AbstractLogicalRule  - Grounded 6 instances of rule 5.0: ~( SAME(P1, P2) ) ^2
+675  [main] DEBUG org.linqs.psl.application.inference.MPEInference  - Initializing objective terms for 24 ground rules.
+Processing ground rule: 20.0: ( ~( SAME('B', 'A') ) | SAME('A', 'B') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@0
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@1
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@616ac46a' derived for '20.0: ( ~( SAME('B', 'A') ) | SAME('A', 'B') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( SAME('A', 'B') ) | SAME('B', 'A') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@1
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@0
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@67b9b51a' derived for '20.0: ( ~( SAME('A', 'B') ) | SAME('B', 'A') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( SAME('C', 'B') ) | SAME('B', 'C') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@2
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@3
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@1205bd62' derived for '20.0: ( ~( SAME('C', 'B') ) | SAME('B', 'C') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( SAME('B', 'C') ) | SAME('C', 'B') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@3
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@2
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@7ef27d7f' derived for '20.0: ( ~( SAME('B', 'C') ) | SAME('C', 'B') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( SAME('A', 'C') ) | SAME('C', 'A') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@4
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@5
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@490caf5f' derived for '20.0: ( ~( SAME('A', 'C') ) | SAME('C', 'A') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( SAME('C', 'A') ) | SAME('A', 'C') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@5
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@4
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@6337c201' derived for '20.0: ( ~( SAME('C', 'A') ) | SAME('A', 'C') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( SIMILAR('B', 'C') ) | ~( ('B' != 'C') ) | SAME('B', 'C') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@3
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@5c669da8' derived for '20.0: ( ~( SIMILAR('B', 'C') ) | ~( ('B' != 'C') ) | SAME('B', 'C') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( SIMILAR('A', 'C') ) | ~( ('A' != 'C') ) | SAME('A', 'C') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@4
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@31920ade' derived for '20.0: ( ~( SIMILAR('A', 'C') ) | ~( ('A' != 'C') ) | SAME('A', 'C') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( SIMILAR('A', 'B') ) | ~( ('A' != 'B') ) | SAME('A', 'B') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@1
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@1d483de4' derived for '20.0: ( ~( SIMILAR('A', 'B') ) | ~( ('A' != 'B') ) | SAME('A', 'B') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( SIMILAR('C', 'A') ) | ~( ('C' != 'A') ) | SAME('C', 'A') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@5
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@4032d386' derived for '20.0: ( ~( SIMILAR('C', 'A') ) | ~( ('C' != 'A') ) | SAME('C', 'A') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( SIMILAR('C', 'B') ) | ~( ('C' != 'B') ) | SAME('C', 'B') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@2
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@28d18df5' derived for '20.0: ( ~( SIMILAR('C', 'B') ) | ~( ('C' != 'B') ) | SAME('C', 'B') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( SIMILAR('B', 'A') ) | ~( ('B' != 'A') ) | SAME('B', 'A') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@0
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@934b6cb' derived for '20.0: ( ~( SIMILAR('B', 'A') ) | ~( ('B' != 'A') ) | SAME('B', 'A') ) ^2' to TermStore
+Processing ground rule: 5.0: ~( SAME('B', 'A') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@0
+Summand coefficient is: 1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredLinearLossTerm@55cf0d14' derived for '5.0: ~( SAME('B', 'A') ) ^2' to TermStore
+Processing ground rule: 5.0: ~( SAME('C', 'B') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@2
+Summand coefficient is: 1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredLinearLossTerm@3b74ac8' derived for '5.0: ~( SAME('C', 'B') ) ^2' to TermStore
+Processing ground rule: 5.0: ~( SAME('A', 'B') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@1
+Summand coefficient is: 1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredLinearLossTerm@27adc16e' derived for '5.0: ~( SAME('A', 'B') ) ^2' to TermStore
+Processing ground rule: 5.0: ~( SAME('A', 'C') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@4
+Summand coefficient is: 1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredLinearLossTerm@b83a9be' derived for '5.0: ~( SAME('A', 'C') ) ^2' to TermStore
+Processing ground rule: 5.0: ~( SAME('C', 'A') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@5
+Summand coefficient is: 1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredLinearLossTerm@2609b277' derived for '5.0: ~( SAME('C', 'A') ) ^2' to TermStore
+Processing ground rule: 5.0: ~( SAME('B', 'C') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@3
+Summand coefficient is: 1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredLinearLossTerm@1fd14d74' derived for '5.0: ~( SAME('B', 'C') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( ('B' != 'A') ) | ~( SAME('C', 'A') ) | ~( SAME('B', 'C') ) | SAME('B', 'A') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@5
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@3
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@0
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@563e4951' derived for '20.0: ( ~( ('B' != 'A') ) | ~( SAME('C', 'A') ) | ~( SAME('B', 'C') ) | SAME('B', 'A') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( ('B' != 'C') ) | ~( SAME('A', 'C') ) | ~( SAME('B', 'A') ) | SAME('B', 'C') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@4
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@0
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@3
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@4066c471' derived for '20.0: ( ~( ('B' != 'C') ) | ~( SAME('A', 'C') ) | ~( SAME('B', 'A') ) | SAME('B', 'C') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( ('C' != 'A') ) | ~( SAME('B', 'A') ) | ~( SAME('C', 'B') ) | SAME('C', 'A') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@0
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@2
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@5
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@2b175c00' derived for '20.0: ( ~( ('C' != 'A') ) | ~( SAME('B', 'A') ) | ~( SAME('C', 'B') ) | SAME('C', 'A') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( ('A' != 'C') ) | ~( SAME('B', 'C') ) | ~( SAME('A', 'B') ) | SAME('A', 'C') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@3
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@1
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@4
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@3eb81efb' derived for '20.0: ( ~( ('A' != 'C') ) | ~( SAME('B', 'C') ) | ~( SAME('A', 'B') ) | SAME('A', 'C') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( ('A' != 'B') ) | ~( SAME('C', 'B') ) | ~( SAME('A', 'C') ) | SAME('A', 'B') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@2
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@4
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@1
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@1ae8bcbc' derived for '20.0: ( ~( ('A' != 'B') ) | ~( SAME('C', 'B') ) | ~( SAME('A', 'C') ) | SAME('A', 'B') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( ('C' != 'B') ) | ~( SAME('A', 'B') ) | ~( SAME('C', 'A') ) | SAME('C', 'B') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@1
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@5
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@2
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@6cdba6dc' derived for '20.0: ( ~( ('C' != 'B') ) | ~( SAME('A', 'B') ) | ~( SAME('C', 'A') ) | SAME('C', 'B') ) ^2' to TermStore
+699  [main] DEBUG org.linqs.psl.application.inference.MPEInference  - Generated 24 objective terms from 24 ground rules.
+700  [main] INFO  org.linqs.psl.application.inference.MPEInference  - Beginning inference.
+700  [main] DEBUG org.linqs.psl.reasoner.admm.ADMMReasoner  - Performing optimization with 6 variables and 24 terms.
+##############PRINTING GLOBAL VALUES STARTS################
+GroundAtoms: [SAME('B', 'A'), SAME('A', 'B'), SAME('C', 'B'), SAME('B', 'C'), SAME('A', 'C'), SAME('C', 'A')]
+Initial values: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+New Consensus Values: [0.3110547988596769, 0.3110547988596769, 0.3807412100095027, 0.3807412100095027, 0.0, 0.0]
+New Consensus Values: [0.46208198052233057, 0.46208198052233057, 0.6319163952789861, 0.6319163952789861, 0.0, 0.0]
+New Consensus Values: [0.45995746802541143, 0.45995746802541104, 0.7256968154624216, 0.7256968154624219, 0.0, 0.0]
+New Consensus Values: [0.3657073565885925, 0.3657073565885916, 0.7007556162650753, 0.7007556162650762, 0.0, 0.0]
+New Consensus Values: [0.2508180459524988, 0.250818045952499, 0.6205403773062717, 0.6205403773062727, 0.0, 0.0]
+New Consensus Values: [0.16686339510918882, 0.16686339510918893, 0.5403850825496598, 0.5403850825496593, 0.0, 0.0]
+New Consensus Values: [0.13430957056106094, 0.13430957056106044, 0.4914590703063153, 0.491459070306315, 0.0, 0.0]
+New Consensus Values: [0.1390376145226336, 0.13903761452263377, 0.47215905147090087, 0.4721590514709005, 0.0, 0.0]
+New Consensus Values: [0.155607524419592, 0.1556075244195923, 0.4674326780343062, 0.4674326780343061, 0.0, 0.0]
+New Consensus Values: [0.17651792936504532, 0.17651792936504554, 0.4759550087253916, 0.4759550087253917, 0.0, 0.0]
+New Consensus Values: [0.19550716756690784, 0.19550716756690795, 0.4931552046102784, 0.4931552046102786, 0.0, 0.0]
+New Consensus Values: [0.2088291682000268, 0.2088291682000268, 0.5135094715384787, 0.5135094715384788, 0.0, 0.0]
+New Consensus Values: [0.21543818559270514, 0.21543818559270503, 0.5323398429178147, 0.5323398429178143, 0.0, 0.0]
+New Consensus Values: [0.2163893621028868, 0.21638936210288667, 0.5467982119165011, 0.5467982119165009, 0.0, 0.0]
+New Consensus Values: [0.21387195827117317, 0.21387195827117314, 0.5560381021096765, 0.5560381021096765, 0.0, 0.0]
+New Consensus Values: [0.2102543506024084, 0.21025435060240844, 0.5607935296446139, 0.5607935296446139, 0.0, 0.0]
+New Consensus Values: [0.2073928926225599, 0.20739289262255986, 0.5626715408994919, 0.5626715408994919, 0.0, 0.0]
+New Consensus Values: [0.2063036627819051, 0.20630366278190504, 0.5634415808998485, 0.5634415808998487, 0.0, 0.0]
+New Consensus Values: [0.20716652135199887, 0.20716652135199887, 0.5645131901639553, 0.5645131901639553, 0.0, 0.0]
+New Consensus Values: [0.20955183192061247, 0.20955183192061247, 0.5666804946703689, 0.5666804946703689, 0.0, 0.0]
+New Consensus Values: [0.21273635099214247, 0.21273635099214247, 0.5701148203326579, 0.5701148203326581, 0.0, 0.0]
+New Consensus Values: [0.21599450535411419, 0.21599450535411419, 0.5745263662048098, 0.5745263662048098, 0.0, 0.0]
+New Consensus Values: [0.21879504394952523, 0.21879504394952523, 0.5793963939575606, 0.5793963939575607, 0.0, 0.0]
+New Consensus Values: [0.2208812824794105, 0.22088128247941044, 0.5841946859736032, 0.5841946859736031, 0.0, 0.0]
+New Consensus Values: [0.22225147074792936, 0.22225147074792936, 0.5885288215025234, 0.5885288215025233, 0.0, 0.0]
+New Consensus Values: [0.22307717836828542, 0.22307717836828542, 0.5922075537379194, 0.5922075537379194, 0.0, 0.0]
+New Consensus Values: [0.22360182433346726, 0.22360182433346726, 0.5952293782128855, 0.5952293782128855, 0.0, 0.0]
+New Consensus Values: [0.22405303472082758, 0.22405303472082758, 0.5977238070570151, 0.597723807057015, 0.0, 0.0]
+New Consensus Values: [0.22458780222138014, 0.22458780222138014, 0.5998765484972984, 0.5998765484972983, 0.0, 0.0]
+New Consensus Values: [0.2252744317324939, 0.2252744317324939, 0.6018639108920064, 0.6018639108920066, 0.0, 0.0]
+New Consensus Values: [0.226104096068908, 0.226104096068908, 0.6038110061951671, 0.6038110061951673, 0.0, 0.0]
+New Consensus Values: [0.22701923475148886, 0.22701923475148886, 0.6057771876029647, 0.6057771876029646, 0.0, 0.0]
+New Consensus Values: [0.22794568578876956, 0.22794568578876956, 0.6077637349792901, 0.60776373497929, 0.0, 0.0]
+New Consensus Values: [0.22881872278772636, 0.22881872278772636, 0.609734468002299, 0.6097344680022989, 0.0, 0.0]
+New Consensus Values: [0.22959801353260018, 0.22959801353260018, 0.6116395468259205, 0.6116395468259206, 0.0, 0.0]
+New Consensus Values: [0.2302711131614927, 0.2302711131614927, 0.6134350474766203, 0.6134350474766203, 0.0, 0.0]
+New Consensus Values: [0.23084830393007547, 0.23084830393007547, 0.615094452854173, 0.6150944528541731, 0.0, 0.0]
+New Consensus Values: [0.23135299377822777, 0.23135299377822777, 0.6166116271270173, 0.616611627127017, 0.0, 0.0]
+New Consensus Values: [0.23181169986659594, 0.23181169986659594, 0.6179972645238413, 0.6179972645238411, 0.0, 0.0]
+New Consensus Values: [0.23224643901463154, 0.23224643901463154, 0.6192719015319069, 0.6192719015319069, 0.0, 0.0]
+New Consensus Values: [0.23267077991076243, 0.23267077991076243, 0.6204584929998952, 0.6204584929998952, 0.0, 0.0]
+New Consensus Values: [0.2330894205701712, 0.2330894205701712, 0.6215766889600545, 0.6215766889600545, 0.0, 0.0]
+New Consensus Values: [0.23350025427770607, 0.23350025427770607, 0.622639794834209, 0.622639794834209, 0.0, 0.0]
+New Consensus Values: [0.23389755896877257, 0.23389755896877257, 0.6236543572658958, 0.6236543572658958, 0.0, 0.0]
+New Consensus Values: [0.2342750897917303, 0.2342750897917303, 0.6246216327947683, 0.6246216327947681, 0.0, 0.0]
+New Consensus Values: [0.23462827910658582, 0.23462827910658582, 0.625539934432728, 0.625539934432728, 0.0, 0.0]
+New Consensus Values: [0.23495524725756264, 0.23495524725756264, 0.6264069440189954, 0.6264069440189951, 0.0, 0.0]
+New Consensus Values: [0.23525674299928298, 0.23525674299928298, 0.6272213851796163, 0.6272213851796159, 0.0, 0.0]
+New Consensus Values: [0.23553538038841176, 0.23553538038841176, 0.627983820580045, 0.6279838205800451, 0.0, 0.0]
+New Consensus Values: [0.23579460758840962, 0.23579460758840962, 0.6286966488573971, 0.6286966488573972, 0.0, 0.0]
+New Consensus Values: [0.23603777255588262, 0.23603777255588262, 0.6293635662944846, 0.6293635662944846, 0.0, 0.0]
+New Consensus Values: [0.23626750531874102, 0.23626750531874102, 0.6299888149831286, 0.6299888149831286, 0.0, 0.0]
+New Consensus Values: [0.23648547987667823, 0.23648547987667823, 0.6305764911750317, 0.6305764911750317, 0.0, 0.0]
+New Consensus Values: [0.23669249637321918, 0.23669249637321918, 0.6311300818272784, 0.6311300818272787, 0.0, 0.0]
+New Consensus Values: [0.23688875769744802, 0.23688875769744802, 0.6316522811714311, 0.6316522811714316, 0.0, 0.0]
+New Consensus Values: [0.23707420363226908, 0.23707420363226908, 0.6321450470304092, 0.6321450470304091, 0.0, 0.0]
+New Consensus Values: [0.23724879491819215, 0.23724879491819215, 0.6326098053939757, 0.6326098053939753, 0.0, 0.0]
+New Consensus Values: [0.23741268814401337, 0.23741268814401337, 0.6330477018069244, 0.633047701806924, 0.0, 0.0]
+New Consensus Values: [0.23756629089725514, 0.23756629089725514, 0.6334598186134498, 0.63345981861345, 0.0, 0.0]
+New Consensus Values: [0.23771022211120335, 0.23771022211120335, 0.633847312598718, 0.6338473125987178, 0.0, 0.0]
+New Consensus Values: [0.23784521976971892, 0.23784521976971892, 0.6342114636578451, 0.634211463657845, 0.0, 0.0]
+New Consensus Values: [0.23797203843149736, 0.23797203843149736, 0.634553651938117, 0.6345536519381171, 0.0, 0.0]
+New Consensus Values: [0.23809136786039858, 0.23809136786039858, 0.6348752942852852, 0.634875294285285, 0.0, 0.0]
+New Consensus Values: [0.23820378814158283, 0.23820378814158283, 0.6351777715795562, 0.6351777715795561, 0.0, 0.0]
+New Consensus Values: [0.23830976183312877, 0.23830976183312877, 0.635462370595094, 0.635462370595094, 0.0, 0.0]
+New Consensus Values: [0.23840965357200203, 0.23840965357200203, 0.6357302523336161, 0.6357302523336159, 0.0, 0.0]
+New Consensus Values: [0.23850376330132186, 0.23850376330132186, 0.6359824477178064, 0.6359824477178065, 0.0, 0.0]
+New Consensus Values: [0.23859236013162372, 0.23859236013162372, 0.636219873846753, 0.6362198738467532, 0.0, 0.0]
+New Consensus Values: [0.23867570790009918, 0.23867570790009918, 0.636443360667707, 0.6364433606677071, 0.0, 0.0]
+New Consensus Values: [0.23875407861559989, 0.23875407861559989, 0.6366536783866886, 0.6366536783866883, 0.0, 0.0]
+New Consensus Values: [0.2388277544499116, 0.2388277544499116, 0.6368515588524402, 0.6368515588524399, 0.0, 0.0]
+New Consensus Values: [0.23889702177143318, 0.23889702177143318, 0.6370377079250232, 0.6370377079250238, 0.0, 0.0]
+New Consensus Values: [0.2389621616907703, 0.2389621616907703, 0.6372128091870931, 0.6372128091870936, 0.0, 0.0]
+New Consensus Values: [0.239023441046351, 0.239023441046351, 0.6373775215160069, 0.6373775215160068, 0.0, 0.0]
+New Consensus Values: [0.23908110634188645, 0.23908110634188645, 0.6375324738170483, 0.637532473817048, 0.0, 0.0]
+New Consensus Values: [0.2391353815216604, 0.2391353815216604, 0.6376782598625971, 0.6376782598625971, 0.0, 0.0]
+New Consensus Values: [0.23918646913834526, 0.23918646913834526, 0.6378154351558022, 0.637815435155802, 0.0, 0.0]
+New Consensus Values: [0.2392345536918073, 0.2392345536918073, 0.6379445165342924, 0.6379445165342921, 0.0, 0.0]
+New Consensus Values: [0.23927980572282623, 0.23927980572282623, 0.6380659842296941, 0.6380659842296937, 0.0, 0.0]
+New Consensus Values: [0.23932238549486182, 0.23932238549486182, 0.6381802855036129, 0.638180285503613, 0.0, 0.0]
+New Consensus Values: [0.2393624455781598, 0.2393624455781598, 0.6382878388174766, 0.6382878388174767, 0.0, 0.0]
+New Consensus Values: [0.23940013215883835, 0.23940013215883835, 0.6383890376647692, 0.638389037664769, 0.0, 0.0]
+New Consensus Values: [0.239435585285978, 0.239435585285978, 0.6384842535445253, 0.6384842535445253, 0.0, 0.0]
+New Consensus Values: [0.23946893847604594, 0.23946893847604594, 0.6385738379319632, 0.638573837931963, 0.0, 0.0]
+New Consensus Values: [0.23950031812102865, 0.23950031812102865, 0.6386581233959711, 0.6386581233959711, 0.0, 0.0]
+New Consensus Values: [0.2395298430457162, 0.2395298430457162, 0.6387374241722015, 0.6387374241722015, 0.0, 0.0]
+New Consensus Values: [0.23955762439950307, 0.23955762439950307, 0.6388120365260701, 0.6388120365260701, 0.0, 0.0]
+New Consensus Values: [0.23958376591104355, 0.23958376591104355, 0.6388822391687284, 0.6388822391687284, 0.0, 0.0]
+New Consensus Values: [0.2396083644211792, 0.2396083644211792, 0.6389482938716926, 0.6389482938716924, 0.0, 0.0]
+New Consensus Values: [0.23963151055657458, 0.23963151055657458, 0.6390104463087666, 0.6390104463087668, 0.0, 0.0]
+New Consensus Values: [0.23965328940804756, 0.23965328940804756, 0.6390689270683653, 0.6390689270683655, 0.0, 0.0]
+New Consensus Values: [0.23967378111540927, 0.23967378111540927, 0.6391239527378959, 0.6391239527378959, 0.0, 0.0]
+New Consensus Values: [0.23969306131272902, 0.23969306131272902, 0.639175726961174, 0.6391757269611743, 0.0, 0.0]
+New Consensus Values: [0.2397112014356671, 0.2397112014356671, 0.6392244413967062, 0.6392244413967063, 0.0, 0.0]
+New Consensus Values: [0.2397282689244889, 0.2397282689244889, 0.6392702765428571, 0.639270276542857, 0.0, 0.0]
+787  [main] INFO  org.linqs.psl.reasoner.admm.ADMMReasoner  - Optimization completed in 95 iterations. Primal res.: 0.0025984259580002734, Dual res.: 1.8300338019501796E-4
+Global update:
+SAME('B', 'C')=3 updated from 1.0 to 0.639270276542857
+SAME('B', 'A')=0 updated from 1.0 to 0.2397282689244889
+SAME('C', 'B')=2 updated from 1.0 to 0.6392702765428571
+SAME('C', 'A')=5 updated from 1.0 to 0.0
+SAME('A', 'C')=4 updated from 1.0 to 0.0
+SAME('A', 'B')=1 updated from 1.0 to 0.2397282689244889
+##############PRINTING GLOBAL VALUES ENDS################
+787  [main] INFO  org.linqs.psl.application.inference.MPEInference  - Inference complete. Writing results to Database.
+787  [main] DEBUG org.linqs.psl.application.inference.MPEInference  - Master inference complete.
+787  [main] DEBUG org.linqs.psl.application.inference.MPEInference  - Stats -- Memory (Bytes): 104777864, Terms: 24, Global Variables: 6 Local Variables: 42
+808  [main] INFO  org.linqs.psl.experiments.Transitivity  - Finished inference in 0.219 seconds
+DiscretePredictionStatistics.compare took 11 milliseconds
+ContinuousPredictionStatistics.compare took 0 milliseconds
+876  [main] INFO  org.linqs.psl.experiments.Transitivity  - MSE: 0.5693796794860071
+879  [main] INFO  org.linqs.psl.experiments.Transitivity  - Accuracy 0.3333333333333333, Error 4.0
+880  [main] INFO  org.linqs.psl.experiments.Transitivity  - Positive Class: precision 1.0, recall 0.3333333333333333
+880  [main] INFO  org.linqs.psl.experiments.Transitivity  - Negative Class Stats: precision 0.0, recall 1.0
