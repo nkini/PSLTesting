@@ -271,8 +271,8 @@ Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@6cdba6dc' derived 
 700  [main] INFO  org.linqs.psl.application.inference.MPEInference  - Beginning inference.
 700  [main] DEBUG org.linqs.psl.reasoner.admm.ADMMReasoner  - Performing optimization with 6 variables and 24 terms.
 ##############PRINTING GLOBAL VALUES STARTS################
-GroundAtoms: [SAME('B', 'A'), SAME('A', 'B'), SAME('C', 'B'), SAME('B', 'C'), SAME('A', 'C'), SAME('C', 'A')]
-Initial values: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+GroundAtoms in Consensus Values: [SAME('B', 'A'), SAME('A', 'B'), SAME('C', 'B'), SAME('B', 'C'), SAME('A', 'C'), SAME('C', 'A')]
+Initial Consensus Values: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
 New Consensus Values: [0.3110547988596769, 0.3110547988596769, 0.3807412100095027, 0.3807412100095027, 0.0, 0.0]
 New Consensus Values: [0.46208198052233057, 0.46208198052233057, 0.6319163952789861, 0.6319163952789861, 0.0, 0.0]
 New Consensus Values: [0.45995746802541143, 0.45995746802541104, 0.7256968154624216, 0.7256968154624219, 0.0, 0.0]

@@ -1,0 +1,658 @@
+0    [main] INFO  org.linqs.psl.config.ConfigManager  - Configuration file loaded: file:/soe/nkini/pslprograms/transitivity/target/classes/psl.properties
+61   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.experiment.name. Returning default of default.
+67   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.experiment.dbpath. Returning default of /tmp.
+67   [main] INFO  org.linqs.psl.config.ConfigManager  - Found value data for option transitivity.experiment.data.path.
+77   [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.experiment.output.outputdir. Returning default of output/default.
+89   [main] INFO  org.linqs.psl.config.ConfigManager  - Found value 20 for option transitivity.model.weights.similar.
+90   [main] INFO  org.linqs.psl.config.ConfigManager  - Found value 40 for option transitivity.model.weights.transitivity.
+90   [main] INFO  org.linqs.psl.config.ConfigManager  - Found value 40 for option transitivity.model.weights.symmetry.
+90   [main] INFO  org.linqs.psl.config.ConfigManager  - Found value 1 for option transitivity.model.weights.prior.
+91   [main] INFO  org.linqs.psl.config.ConfigManager  - Found value true for option transitivity.model.rule.transitivity.
+91   [main] INFO  org.linqs.psl.config.ConfigManager  - Found value true for option transitivity.model.rule.symmetry.
+247  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.rdbmsdatastore.valuecolumn. Returning default of truth.
+247  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.rdbmsdatastore.confidencecolumn. Returning default of confidence.
+247  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.rdbmsdatastore.partitioncolumn. Returning default of partition.
+266  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.rdbmsdatastore.usestringids. Returning default of true.
+269  [main] DEBUG org.linqs.psl.database.rdbms.RDBMSDataStore  - Registered 0 pre-existing predicates from RDBMS.
+334  [main] INFO  org.linqs.psl.experiments.Transitivity  - Running experiment default
+337  [main] WARN  org.linqs.psl.database.rdbms.RDBMSDataStoreMetadata  - Determining max partition, no partitions found null
+367  [main] INFO  org.linqs.psl.experiments.Transitivity  - Defining model rules
+429  [main] DEBUG org.linqs.psl.experiments.Transitivity  - model: Model:
+20.0: ( SIMILAR(P1, P2) & (P1 != P2) ) >> SAME(P1, P2) ^2
+40.0: ( ( SAME(P1, P2) & SAME(P2, P3) ) & (P1 != P3) ) >> SAME(P1, P3) ^2
+40.0: SAME(P1, P2) >> SAME(P2, P1) ^2
+1.0: ~( SAME(P1, P2) ) ^2
+430  [main] INFO  org.linqs.psl.experiments.Transitivity  - Loading data into database
+461  [main] INFO  org.linqs.psl.experiments.Transitivity  - Starting inference
+497  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.mpeinference.reasoner. Returning default of org.linqs.psl.reasoner.admm.ADMMReasonerFactory@4fa1c212.
+497  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.maxiterations. Returning default of 25000.
+497  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.stepsize. Returning default of 1.0.
+498  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.stopcheck. Returning default of 1.
+498  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.epsilonabs. Returning default of 1.0E-5.
+498  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.epsilonrel. Returning default of 0.001.
+498  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmreasoner.numthreads. Returning default of 4.
+498  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.mpeinference.termstore. Returning default of org.linqs.psl.reasoner.admm.term.ADMMTermStore.
+498  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.admmmemorytermstore.internalstore. Returning default of org.linqs.psl.reasoner.term.MemoryTermStore.
+499  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.memorytermstore.initialsize. Returning default of 5000.
+499  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.mpeinference.groundrulestore. Returning default of org.linqs.psl.application.groundrulestore.MemoryGroundRuleStore.
+502  [main] INFO  org.linqs.psl.config.ConfigManager  - No value found for option transitivity.mpeinference.termgenerator. Returning default of org.linqs.psl.reasoner.admm.term.ADMMTermGenerator.
+504  [main] DEBUG org.linqs.psl.application.inference.MPEInference  - Creating persisted atom mannager.
+508  [main] INFO  org.linqs.psl.application.inference.MPEInference  - Grounding out model.
+Grounding 20.0: ( SIMILAR(P1, P2) & (P1 != P2) ) >> SAME(P1, P2) ^2
+DNF: (P1 != P2) & SIMILAR(P1, P2) & ~SAME(P1, P2)
+PosLit: ('B' != 'A'): 1.0
+PosLit: SIMILAR('B', 'A'): 0.3
+NegLit: SAME('B', 'A'): 0.0
+This ground rule was added
+PosLit: ('C' != 'B'): 1.0
+PosLit: SIMILAR('C', 'B'): 0.8
+NegLit: SAME('C', 'B'): 0.0
+This ground rule was added
+PosLit: ('A' != 'B'): 1.0
+PosLit: SIMILAR('A', 'B'): 0.3
+NegLit: SAME('A', 'B'): 0.0
+This ground rule was added
+PosLit: ('A' != 'C'): 1.0
+PosLit: SIMILAR('A', 'C'): 0.5
+NegLit: SAME('A', 'C'): 0.0
+This ground rule was added
+PosLit: ('B' != 'C'): 1.0
+PosLit: SIMILAR('B', 'C'): 0.8
+NegLit: SAME('B', 'C'): 0.0
+This ground rule was added
+PosLit: ('C' != 'A'): 1.0
+PosLit: SIMILAR('C', 'A'): 0.5
+NegLit: SAME('C', 'A'): 0.0
+This ground rule was added
+518  [main] DEBUG org.linqs.psl.model.rule.logical.AbstractLogicalRule  - Grounded 6 instances of rule 20.0: ( SIMILAR(P1, P2) & (P1 != P2) ) >> SAME(P1, P2) ^2
+Grounding 40.0: ( ( SAME(P1, P2) & SAME(P2, P3) ) & (P1 != P3) ) >> SAME(P1, P3) ^2
+DNF: (P1 != P3) & SAME(P2, P3) & SAME(P1, P2) & ~SAME(P1, P3)
+PosLit: ('B' != 'C'): 1.0
+PosLit: SAME('A', 'C'): 1.0
+PosLit: SAME('B', 'A'): 1.0
+NegLit: SAME('B', 'C'): 0.0
+This ground rule was added
+PosLit: ('A' != 'B'): 1.0
+PosLit: SAME('C', 'B'): 1.0
+PosLit: SAME('A', 'C'): 1.0
+NegLit: SAME('A', 'B'): 0.0
+This ground rule was added
+PosLit: ('C' != 'B'): 1.0
+PosLit: SAME('A', 'B'): 1.0
+PosLit: SAME('C', 'A'): 1.0
+NegLit: SAME('C', 'B'): 0.0
+This ground rule was added
+PosLit: ('B' != 'A'): 1.0
+PosLit: SAME('C', 'A'): 1.0
+PosLit: SAME('B', 'C'): 1.0
+NegLit: SAME('B', 'A'): 0.0
+This ground rule was added
+PosLit: ('C' != 'A'): 1.0
+PosLit: SAME('B', 'A'): 1.0
+PosLit: SAME('C', 'B'): 1.0
+NegLit: SAME('C', 'A'): 0.0
+This ground rule was added
+PosLit: ('A' != 'C'): 1.0
+PosLit: SAME('B', 'C'): 1.0
+PosLit: SAME('A', 'B'): 1.0
+NegLit: SAME('A', 'C'): 0.0
+This ground rule was added
+523  [main] DEBUG org.linqs.psl.model.rule.logical.AbstractLogicalRule  - Grounded 6 instances of rule 40.0: ( ( SAME(P1, P2) & SAME(P2, P3) ) & (P1 != P3) ) >> SAME(P1, P3) ^2
+Grounding 40.0: SAME(P1, P2) >> SAME(P2, P1) ^2
+DNF: SAME(P1, P2) & ~SAME(P2, P1)
+PosLit: SAME('B', 'A'): 1.0
+NegLit: SAME('A', 'B'): 0.0
+This ground rule was added
+PosLit: SAME('C', 'B'): 1.0
+NegLit: SAME('B', 'C'): 0.0
+This ground rule was added
+PosLit: SAME('A', 'B'): 1.0
+NegLit: SAME('B', 'A'): 0.0
+This ground rule was added
+PosLit: SAME('B', 'C'): 1.0
+NegLit: SAME('C', 'B'): 0.0
+This ground rule was added
+PosLit: SAME('A', 'C'): 1.0
+NegLit: SAME('C', 'A'): 0.0
+This ground rule was added
+PosLit: SAME('C', 'A'): 1.0
+NegLit: SAME('A', 'C'): 0.0
+This ground rule was added
+524  [main] DEBUG org.linqs.psl.model.rule.logical.AbstractLogicalRule  - Grounded 6 instances of rule 40.0: SAME(P1, P2) >> SAME(P2, P1) ^2
+Grounding 1.0: ~( SAME(P1, P2) ) ^2
+DNF: SAME(P1, P2)
+PosLit: SAME('B', 'A'): 1.0
+This ground rule was added
+PosLit: SAME('C', 'B'): 1.0
+This ground rule was added
+PosLit: SAME('A', 'B'): 1.0
+This ground rule was added
+PosLit: SAME('B', 'C'): 1.0
+This ground rule was added
+PosLit: SAME('A', 'C'): 1.0
+This ground rule was added
+PosLit: SAME('C', 'A'): 1.0
+This ground rule was added
+525  [main] DEBUG org.linqs.psl.model.rule.logical.AbstractLogicalRule  - Grounded 6 instances of rule 1.0: ~( SAME(P1, P2) ) ^2
+525  [main] DEBUG org.linqs.psl.application.inference.MPEInference  - Initializing objective terms for 24 ground rules.
+Processing ground rule: 1.0: ~( SAME('B', 'C') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@0
+Summand coefficient is: 1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredLinearLossTerm@28d18df5' derived for '1.0: ~( SAME('B', 'C') ) ^2' to TermStore
+Processing ground rule: 1.0: ~( SAME('B', 'A') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@1
+Summand coefficient is: 1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredLinearLossTerm@934b6cb' derived for '1.0: ~( SAME('B', 'A') ) ^2' to TermStore
+Processing ground rule: 1.0: ~( SAME('C', 'B') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@2
+Summand coefficient is: 1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredLinearLossTerm@55cf0d14' derived for '1.0: ~( SAME('C', 'B') ) ^2' to TermStore
+Processing ground rule: 1.0: ~( SAME('A', 'C') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@3
+Summand coefficient is: 1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredLinearLossTerm@3b74ac8' derived for '1.0: ~( SAME('A', 'C') ) ^2' to TermStore
+Processing ground rule: 1.0: ~( SAME('C', 'A') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@4
+Summand coefficient is: 1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredLinearLossTerm@27adc16e' derived for '1.0: ~( SAME('C', 'A') ) ^2' to TermStore
+Processing ground rule: 1.0: ~( SAME('A', 'B') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@5
+Summand coefficient is: 1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredLinearLossTerm@b83a9be' derived for '1.0: ~( SAME('A', 'B') ) ^2' to TermStore
+Processing ground rule: 40.0: ( ~( SAME('A', 'B') ) | SAME('B', 'A') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@5
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@1
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@2609b277' derived for '40.0: ( ~( SAME('A', 'B') ) | SAME('B', 'A') ) ^2' to TermStore
+Processing ground rule: 40.0: ( ~( SAME('B', 'A') ) | SAME('A', 'B') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@1
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@5
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@1fd14d74' derived for '40.0: ( ~( SAME('B', 'A') ) | SAME('A', 'B') ) ^2' to TermStore
+Processing ground rule: 40.0: ( ~( SAME('A', 'C') ) | SAME('C', 'A') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@3
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@4
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@563e4951' derived for '40.0: ( ~( SAME('A', 'C') ) | SAME('C', 'A') ) ^2' to TermStore
+Processing ground rule: 40.0: ( ~( SAME('C', 'A') ) | SAME('A', 'C') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@4
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@3
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@4066c471' derived for '40.0: ( ~( SAME('C', 'A') ) | SAME('A', 'C') ) ^2' to TermStore
+Processing ground rule: 40.0: ( ~( SAME('C', 'B') ) | SAME('B', 'C') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@2
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@0
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@2b175c00' derived for '40.0: ( ~( SAME('C', 'B') ) | SAME('B', 'C') ) ^2' to TermStore
+Processing ground rule: 40.0: ( ~( SAME('B', 'C') ) | SAME('C', 'B') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@0
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@2
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@3eb81efb' derived for '40.0: ( ~( SAME('B', 'C') ) | SAME('C', 'B') ) ^2' to TermStore
+Processing ground rule: 40.0: ( ~( ('A' != 'B') ) | ~( SAME('C', 'B') ) | ~( SAME('A', 'C') ) | SAME('A', 'B') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@2
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@3
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@5
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@1ae8bcbc' derived for '40.0: ( ~( ('A' != 'B') ) | ~( SAME('C', 'B') ) | ~( SAME('A', 'C') ) | SAME('A', 'B') ) ^2' to TermStore
+Processing ground rule: 40.0: ( ~( ('C' != 'A') ) | ~( SAME('B', 'A') ) | ~( SAME('C', 'B') ) | SAME('C', 'A') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@1
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@2
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@4
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@6cdba6dc' derived for '40.0: ( ~( ('C' != 'A') ) | ~( SAME('B', 'A') ) | ~( SAME('C', 'B') ) | SAME('C', 'A') ) ^2' to TermStore
+Processing ground rule: 40.0: ( ~( ('A' != 'C') ) | ~( SAME('B', 'C') ) | ~( SAME('A', 'B') ) | SAME('A', 'C') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@0
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@5
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@3
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@7d3d101b' derived for '40.0: ( ~( ('A' != 'C') ) | ~( SAME('B', 'C') ) | ~( SAME('A', 'B') ) | SAME('A', 'C') ) ^2' to TermStore
+Processing ground rule: 40.0: ( ~( ('B' != 'C') ) | ~( SAME('A', 'C') ) | ~( SAME('B', 'A') ) | SAME('B', 'C') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@3
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@1
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@0
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@30c8681' derived for '40.0: ( ~( ('B' != 'C') ) | ~( SAME('A', 'C') ) | ~( SAME('B', 'A') ) | SAME('B', 'C') ) ^2' to TermStore
+Processing ground rule: 40.0: ( ~( ('B' != 'A') ) | ~( SAME('C', 'A') ) | ~( SAME('B', 'C') ) | SAME('B', 'A') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@4
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@0
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@1
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@5cdec700' derived for '40.0: ( ~( ('B' != 'A') ) | ~( SAME('C', 'A') ) | ~( SAME('B', 'C') ) | SAME('B', 'A') ) ^2' to TermStore
+Processing ground rule: 40.0: ( ~( ('C' != 'B') ) | ~( SAME('A', 'B') ) | ~( SAME('C', 'A') ) | SAME('C', 'B') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@5
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@4
+Summand coefficient is: 1.0
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@2
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@6d026701' derived for '40.0: ( ~( ('C' != 'B') ) | ~( SAME('A', 'B') ) | ~( SAME('C', 'A') ) | SAME('C', 'B') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( ('B' != 'A') ) | ~( SIMILAR('B', 'A') ) | SAME('B', 'A') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@1
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@78aa1f72' derived for '20.0: ( ~( ('B' != 'A') ) | ~( SIMILAR('B', 'A') ) | SAME('B', 'A') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( ('B' != 'C') ) | ~( SIMILAR('B', 'C') ) | SAME('B', 'C') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@0
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@1f75a668' derived for '20.0: ( ~( ('B' != 'C') ) | ~( SIMILAR('B', 'C') ) | SAME('B', 'C') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( ('A' != 'C') ) | ~( SIMILAR('A', 'C') ) | SAME('A', 'C') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@3
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@35399441' derived for '20.0: ( ~( ('A' != 'C') ) | ~( SIMILAR('A', 'C') ) | SAME('A', 'C') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( ('C' != 'A') ) | ~( SIMILAR('C', 'A') ) | SAME('C', 'A') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@4
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@4b7dc788' derived for '20.0: ( ~( ('C' != 'A') ) | ~( SIMILAR('C', 'A') ) | SAME('C', 'A') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( ('C' != 'B') ) | ~( SIMILAR('C', 'B') ) | SAME('C', 'B') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@2
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@6304101a' derived for '20.0: ( ~( ('C' != 'B') ) | ~( SIMILAR('C', 'B') ) | SAME('C', 'B') ) ^2' to TermStore
+Processing ground rule: 20.0: ( ~( ('A' != 'B') ) | ~( SIMILAR('A', 'B') ) | SAME('A', 'B') ) ^2
+Variable is :org.linqs.psl.reasoner.admm.term.LocalVariable@5
+Summand coefficient is: -1.0
+Adding 'org.linqs.psl.reasoner.admm.term.SquaredHingeLossTerm@5170bcf4' derived for '20.0: ( ~( ('A' != 'B') ) | ~( SIMILAR('A', 'B') ) | SAME('A', 'B') ) ^2' to TermStore
+542  [main] DEBUG org.linqs.psl.application.inference.MPEInference  - Generated 24 objective terms from 24 ground rules.
+543  [main] INFO  org.linqs.psl.application.inference.MPEInference  - Beginning inference.
+543  [main] DEBUG org.linqs.psl.reasoner.admm.ADMMReasoner  - Performing optimization with 6 variables and 24 terms.
+543  [main] INFO  CV  - GroundAtoms in Consensus Values: [SAME('B', 'C'), SAME('B', 'A'), SAME('C', 'B'), SAME('A', 'C'), SAME('C', 'A'), SAME('A', 'B')]
+543  [main] INFO  CV  - Initial Consensus Values: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+555  [main] INFO  CV  - New Consensus Values: [0.34610917537746805, 0.2764227642276423, 0.34610917537746805, 0.3042973286875726, 0.0, 0.0]
+605  [main] INFO  CV  - New Consensus Values: [0.6034497876088766, 0.3779236287013533, 0.577563509608153, 0.44118704816313975, 0.0, 0.0]
+606  [main] INFO  CV  - New Consensus Values: [0.7611379724126487, 0.3542746102365325, 0.6969344290950291, 0.44662721094088637, 0.0, 0.0]
+606  [main] INFO  CV  - New Consensus Values: [0.829395847280914, 0.275043528192475, 0.7441627689747861, 0.384428758451087, 0.0, 0.0]
+606  [main] INFO  CV  - New Consensus Values: [0.8333997333365701, 0.1955717707354045, 0.7576866031568781, 0.3104402009284966, 0.0, 0.0]
+606  [main] INFO  CV  - New Consensus Values: [0.803221142511419, 0.14461538798382462, 0.7599037036972044, 0.25720008437841807, 0.0, 0.0]
+607  [main] INFO  CV  - New Consensus Values: [0.7646346701569074, 0.1273800436911209, 0.7589485807249906, 0.23430071635843938, 0.0, 0.0]
+607  [main] INFO  CV  - New Consensus Values: [0.736276760206289, 0.135175073530932, 0.7537290047437415, 0.23639907715858863, 0.0, 0.0]
+607  [main] INFO  CV  - New Consensus Values: [0.7234856720253092, 0.1552186574696625, 0.7458442863961395, 0.25245981961158875, 0.0, 0.0]
+607  [main] INFO  CV  - New Consensus Values: [0.722926756069811, 0.17652519375772918, 0.7390830223312792, 0.271844001697858, 0.0, 0.0]
+619  [main] INFO  CV  - New Consensus Values: [0.7289129778219314, 0.19232366774213436, 0.7361008321829489, 0.28732575677607264, 0.0, 0.0]
+619  [main] INFO  CV  - New Consensus Values: [0.7368728076620863, 0.19758874476430752, 0.7346581822132875, 0.2957930509857924, 0.0, 0.0]
+622  [main] INFO  CV  - New Consensus Values: [0.7435076518577374, 0.19518713821275124, 0.7361500306821382, 0.29770439828480183, 0.0, 0.0]
+622  [main] INFO  CV  - New Consensus Values: [0.7480619953531326, 0.1888192051052439, 0.7397082014395291, 0.2950961816619403, 0.0, 0.0]
+623  [main] INFO  CV  - New Consensus Values: [0.7509868238435021, 0.1816684999057723, 0.7437891949417159, 0.2903659842879255, 0.0, 0.0]
+623  [main] INFO  CV  - New Consensus Values: [0.7529139658825539, 0.17576596637219222, 0.7472306769414612, 0.28546559538893085, 0.0, 0.0]
+623  [main] INFO  CV  - New Consensus Values: [0.7542388858365582, 0.1719357643335359, 0.7495550501234224, 0.2815428118892413, 0.0, 0.0]
+623  [main] INFO  CV  - New Consensus Values: [0.7551186183014756, 0.17008938441851423, 0.7508102212776302, 0.27895530644796135, 0.0, 0.0]
+623  [main] INFO  CV  - New Consensus Values: [0.7556083348742414, 0.1696401940888648, 0.751288624974747, 0.27750737546805043, 0.0, 0.0]
+623  [main] INFO  CV  - New Consensus Values: [0.7557682191065104, 0.16987523370758048, 0.751315881536187, 0.27675036101225203, 0.0, 0.0]
+624  [main] INFO  CV  - New Consensus Values: [0.7556962934039622, 0.1702022225727046, 0.7511508847604679, 0.27622964230978914, 0.0, 0.0]
+624  [main] INFO  CV  - New Consensus Values: [0.7555105402922021, 0.17025840768738593, 0.7509641894982381, 0.2756250711132349, 0.0, 0.0]
+625  [main] INFO  CV  - New Consensus Values: [0.7553170242886337, 0.16991087182218215, 0.7508507067369621, 0.27478770100473665, 0.0, 0.0]
+625  [main] INFO  CV  - New Consensus Values: [0.755187471528978, 0.1691945685722258, 0.750849569762174, 0.2737074265871466, 0.0, 0.0]
+625  [main] INFO  CV  - New Consensus Values: [0.7551530354971054, 0.16823141085762497, 0.7509616858710709, 0.2724528290071329, 0.0, 0.0]
+625  [main] INFO  CV  - New Consensus Values: [0.7552108016549531, 0.16716035920526326, 0.7511643416343571, 0.2711146998394807, 0.0, 0.0]
+626  [main] INFO  CV  - New Consensus Values: [0.7553364745215893, 0.1660927030613673, 0.7514238159904318, 0.269769080700183, 0.0, 0.0]
+626  [main] INFO  CV  - New Consensus Values: [0.755497631203573, 0.16509386712775065, 0.7517058265536224, 0.268462105650641, 0.0, 0.0]
+626  [main] INFO  CV  - New Consensus Values: [0.7556641369448512, 0.1641853429650681, 0.7519828526540862, 0.2672109928803959, 0.0, 0.0]
+626  [main] INFO  CV  - New Consensus Values: [0.755814361181936, 0.1633576420172141, 0.7522377138089722, 0.2660131634079827, 0.0, 0.0]
+626  [main] INFO  CV  - New Consensus Values: [0.7559372828644323, 0.16258607419818347, 0.752463699649678, 0.2648567817043978, 0.0, 0.0]
+627  [main] INFO  CV  - New Consensus Values: [0.7562469106838575, 0.16184388965169116, 0.7524468483410699, 0.2637288184210614, 0.0, 0.0]
+627  [main] INFO  CV  - New Consensus Values: [0.7566010879254313, 0.16111036325124667, 0.7523614030457935, 0.2626398449278667, 0.0, 0.0]
+627  [main] INFO  CV  - New Consensus Values: [0.7568850076174639, 0.16037379893585704, 0.7523419396813461, 0.26158456819284887, 0.0, 0.0]
+627  [main] INFO  CV  - New Consensus Values: [0.7570611312181968, 0.15963081177255628, 0.7524297964954693, 0.26054559722032805, 0.0, 0.0]
+627  [main] INFO  CV  - New Consensus Values: [0.757145078311971, 0.15888367075871018, 0.7526052483771485, 0.25950613940204964, 0.0, 0.0]
+627  [main] INFO  CV  - New Consensus Values: [0.7571745251603266, 0.1581372478318818, 0.7528265040160594, 0.2584583769212459, 0.0, 0.0]
+627  [main] INFO  CV  - New Consensus Values: [0.7571858001799061, 0.15739656522029863, 0.7530569340786425, 0.2574046802819195, 0.0, 0.0]
+628  [main] INFO  CV  - New Consensus Values: [0.7572025988244769, 0.15666534825767378, 0.7532761790496865, 0.2563537038721452, 0.0, 0.0]
+628  [main] INFO  CV  - New Consensus Values: [0.7572346426988302, 0.15594554553563983, 0.7534792709070361, 0.25531505171402163, 0.0, 0.0]
+628  [main] INFO  CV  - New Consensus Values: [0.7572816936070671, 0.15523753332899679, 0.7536703586081198, 0.25429538078239017, 0.0, 0.0]
+628  [main] INFO  CV  - New Consensus Values: [0.7573388113414639, 0.1545406572436809, 0.7538562572580572, 0.25329703628065364, 0.0, 0.0]
+628  [main] INFO  CV  - New Consensus Values: [0.7574004360736861, 0.15385382105800596, 0.7540423768415551, 0.2523188076860536, 0.0, 0.0]
+628  [main] INFO  CV  - New Consensus Values: [0.7574625392332773, 0.15317594372229548, 0.7542313350399891, 0.2513576930167255, 0.0, 0.0]
+628  [main] INFO  CV  - New Consensus Values: [0.7575231418222825, 0.15250621745237705, 0.754423371815659, 0.25041060805146464, 0.0, 0.0]
+629  [main] INFO  CV  - New Consensus Values: [0.7575818930533644, 0.15184418215282283, 0.7546174591004856, 0.24947543172253908, 0.0, 0.0]
+629  [main] INFO  CV  - New Consensus Values: [0.7576393479264263, 0.15118967447785314, 0.754812316831164, 0.24855128035603716, 0.0, 0.0]
+629  [main] INFO  CV  - New Consensus Values: [0.7576963392254077, 0.1505427187921864, 0.7550069985321537, 0.24763823379434552, 0.0, 0.0]
+629  [main] INFO  CV  - New Consensus Values: [0.7577535941254048, 0.1499034142713791, 0.7552010512316055, 0.24673684212078367, 0.0, 0.0]
+629  [main] INFO  CV  - New Consensus Values: [0.7578115840482801, 0.14927185027446274, 0.7553944131533582, 0.24584768036193225, 0.0, 0.0]
+630  [main] INFO  CV  - New Consensus Values: [0.7578705278065261, 0.14864806077476825, 0.7555872247719506, 0.24497108619152907, 0.0, 0.0]
+630  [main] INFO  CV  - New Consensus Values: [0.7579304639512984, 0.14803201348605136, 0.7557796679010342, 0.244107092364682, 0.0, 0.0]
+630  [main] INFO  CV  - New Consensus Values: [0.7579913336344939, 0.14742362181486796, 0.7559718758668499, 0.24325549229624865, 0.0, 0.0]
+630  [main] INFO  CV  - New Consensus Values: [0.7580530449093364, 0.1468227666715966, 0.756163908554018, 0.24241595805767588, 0.0, 0.0]
+630  [main] INFO  CV  - New Consensus Values: [0.7581155110726219, 0.14622931804375222, 0.7563557658644354, 0.2415881477158015, 0.0, 0.0]
+630  [main] INFO  CV  - New Consensus Values: [0.7581786670607971, 0.1456431506071167, 0.7565474137997098, 0.24077177061649987, 0.0, 0.0]
+630  [main] INFO  CV  - New Consensus Values: [0.7582424715596474, 0.14506415170207912, 0.7567388072293821, 0.23996660750057877, 0.0, 0.0]
+630  [main] INFO  CV  - New Consensus Values: [0.7583069019208339, 0.1444922227770997, 0.756929903613275, 0.23917249894384987, 0.0, 0.0]
+631  [main] INFO  CV  - New Consensus Values: [0.7583719469025999, 0.14392727669441627, 0.7571206684356656, 0.2383893201296452, 0.0, 0.0]
+631  [main] INFO  CV  - New Consensus Values: [0.7584376001286433, 0.14336923338796456, 0.7573110755340107, 0.2376169563640454, 0.0, 0.0]
+631  [main] INFO  CV  - New Consensus Values: [0.7585038555269339, 0.1428180157457112, 0.7575011053033939, 0.23685528696819322, 0.0, 0.0]
+631  [main] INFO  CV  - New Consensus Values: [0.758570704937368, 0.1422735467290687, 0.7576907425749112, 0.2361041789687575, 0.0, 0.0]
+631  [main] INFO  CV  - New Consensus Values: [0.7586381374743983, 0.141735747975935, 0.7578799748729487, 0.23536348817314348, 0.0, 0.0]
+631  [main] INFO  CV  - New Consensus Values: [0.7587061399875193, 0.14120453962818033, 0.7580687911424844, 0.23463306393262887, 0.0, 0.0]
+631  [main] INFO  CV  - New Consensus Values: [0.7587746979748593, 0.14067984090443378, 0.758257180846985, 0.23391275440481415, 0.0, 0.0]
+631  [main] INFO  CV  - New Consensus Values: [0.7588437964715238, 0.1401615709423112, 0.7584451333580456, 0.23320241042882803, 0.0, 0.0]
+632  [main] INFO  CV  - New Consensus Values: [0.7589134206575355, 0.1396496495645502, 0.7586326376125323, 0.2325018874307268, 0.0, 0.0]
+632  [main] INFO  CV  - New Consensus Values: [0.7589835561310218, 0.13914399779153705, 0.7588196820236102, 0.23181104566202076, 0.0, 0.0]
+632  [main] INFO  CV  - New Consensus Values: [0.7590541889234326, 0.13864453806695057, 0.7590062546014652, 0.23112974945343964, 0.0, 0.0]
+632  [main] INFO  CV  - New Consensus Values: [0.7591301327460119, 0.13815119425492092, 0.759187515840334, 0.23045786615557087, 0.0, 0.0]
+632  [main] INFO  CV  - New Consensus Values: [0.759214430285988, 0.13766389150390065, 0.7593608554124349, 0.2297957230646665, 0.0, 0.0]
+632  [main] INFO  CV  - New Consensus Values: [0.7593048193463842, 0.1371825560678333, 0.7595291835391004, 0.22914379921248265, 0.0, 0.0]
+632  [main] INFO  CV  - New Consensus Values: [0.7593980767406363, 0.13670711514811945, 0.7596959729382107, 0.2285020879392805, 0.0, 0.0]
+632  [main] INFO  CV  - New Consensus Values: [0.7594921019377223, 0.13623749678719563, 0.7598630837770148, 0.2278700840855365, 0.0, 0.0]
+633  [main] INFO  CV  - New Consensus Values: [0.7595861269306112, 0.1357736298174997, 0.7600307831728427, 0.22724710499945452, 0.0, 0.0]
+633  [main] INFO  CV  - New Consensus Values: [0.7596801481489027, 0.1353154438530662, 0.760198583631343, 0.22663259882760606, 0.0, 0.0]
+633  [main] INFO  CV  - New Consensus Values: [0.7597743694813291, 0.1348628693049642, 0.7603659549321753, 0.22602627321746255, 0.0, 0.0]
+633  [main] INFO  CV  - New Consensus Values: [0.7598689289095242, 0.13441583740340488, 0.7605326197290003, 0.2254280563504203, 0.0, 0.0]
+633  [main] INFO  CV  - New Consensus Values: [0.759963857023581, 0.13397428021491212, 0.7606985394458629, 0.22483798231841273, 0.0, 0.0]
+633  [main] INFO  CV  - New Consensus Values: [0.7600591290468055, 0.13353813064925976, 0.7608637899364609, 0.224256085385708, 0.0, 0.0]
+633  [main] INFO  CV  - New Consensus Values: [0.7601547149795673, 0.1331073224559464, 0.7610284579937262, 0.22368234317837782, 0.0, 0.0]
+633  [main] INFO  CV  - New Consensus Values: [0.7602505982836073, 0.1326817902129235, 0.7611925969348344, 0.22311666846845896, 0.0, 0.0]
+633  [main] INFO  CV  - New Consensus Values: [0.76034677203002, 0.13226146931126706, 0.7613562255589699, 0.22255892947037026, 0.0, 0.0]
+634  [main] INFO  CV  - New Consensus Values: [0.7604432294274065, 0.1318462959390283, 0.7615193430232176, 0.22200897728094304, 0.0, 0.0]
+634  [main] INFO  CV  - New Consensus Values: [0.760539958509501, 0.13143620706637815, 0.7616819419393064, 0.22146666702658507, 0.0, 0.0]
+634  [main] INFO  CV  - New Consensus Values: [0.7606369422858613, 0.13103114043293523, 0.7618440145332322, 0.22093186830009706, 0.0, 0.0]
+634  [main] INFO  CV  - New Consensus Values: [0.760734161576227, 0.13063103453723432, 0.7620055537566106, 0.22040446647376324, 0.0, 0.0]
+634  [main] INFO  CV  - New Consensus Values: [0.7608315977081271, 0.13023582862775893, 0.7621665526524856, 0.21988435882159404, 0.0, 0.0]
+634  [main] INFO  CV  - New Consensus Values: [0.7609292338470388, 0.12984546269481914, 0.7623270039594642, 0.2193714491728971, 0.0, 0.0]
+634  [main] INFO  CV  - New Consensus Values: [0.7610270550930761, 0.1294598774626647, 0.7624869003721428, 0.21886564347578055, 0.0, 0.0]
+634  [main] INFO  CV  - New Consensus Values: [0.7611250480004814, 0.12907901438144873, 0.762646235088121, 0.21836684721138028, 0.0, 0.0]
+634  [main] INFO  CV  - New Consensus Values: [0.7612232000644433, 0.12870281561888866, 0.7628050022125092, 0.2178749645766041, 0.0, 0.0]
+635  [main] INFO  CV  - New Consensus Values: [0.7613214994001416, 0.12833122405165667, 0.7629631968424608, 0.21738989885287147, 0.0, 0.0]
+635  [main] INFO  CV  - New Consensus Values: [0.7614199345979723, 0.1279641832566098, 0.7631208148874408, 0.21691155329371042, 0.0, 0.0]
+635  [main] INFO  CV  - New Consensus Values: [0.7615184946548095, 0.12760163750199802, 0.7632778527758914, 0.21643983201900824, 0.0, 0.0]
+635  [main] INFO  CV  - New Consensus Values: [0.7616171689052206, 0.12724353173876768, 0.7634343071803553, 0.21597464063902017, 0.0, 0.0]
+635  [main] INFO  CV  - New Consensus Values: [0.7617159469323488, 0.12688981159202292, 0.7635901748295596, 0.2155158865400088, 0.0, 0.0]
+635  [main] INFO  CV  - New Consensus Values: [0.7618148184766247, 0.1265404233526722, 0.7637454524184607, 0.2150634788964079, 0.0, 0.0]
+635  [main] INFO  CV  - New Consensus Values: [0.7619137733690282, 0.12619531396924696, 0.7639001365951898, 0.21461732852660984, 0.0, 0.0]
+636  [main] INFO  CV  - New Consensus Values: [0.7620128015040032, 0.12585443103986968, 0.7640542239943547, 0.21417734770249705, 0.0, 0.0]
+636  [main] INFO  CV  - New Consensus Values: [0.7621118928502751, 0.1255177228043419, 0.7642077112896066, 0.2137434499855956, 0.0, 0.0]
+636  [main] INFO  CV  - New Consensus Values: [0.7622110374859974, 0.12518513813632953, 0.7643605952463474, 0.21331555012071743, 0.0, 0.0]
+636  [main] INFO  CV  - New Consensus Values: [0.7623102256411496, 0.12485662653563308, 0.7645128727634719, 0.21289356398606177, 0.0, 0.0]
+636  [main] INFO  CV  - New Consensus Values: [0.7624094477333022, 0.12453213812053766, 0.764664540899591, 0.21247740858222208, 0.0, 0.0]
+636  [main] INFO  CV  - New Consensus Values: [0.7625086943892138, 0.12421162362023999, 0.7648155968837731, 0.21206700203924683, 0.0, 0.0]
+637  [main] INFO  CV  - New Consensus Values: [0.7626079564510375, 0.12389503436736453, 0.7649660381138939, 0.2116622636256447, 0.0, 0.0]
+637  [main] INFO  CV  - New Consensus Values: [0.7627072249703402, 0.12358232229056362, 0.7651158621469571, 0.2112631137506243, 0.0, 0.0]
+637  [main] INFO  CV  - New Consensus Values: [0.762806491195073, 0.12327343990720989, 0.7652650666858528, 0.21086947395739536, 0.0, 0.0]
+637  [main] INFO  CV  - New Consensus Values: [0.7629057465545487, 0.1229683403161791, 0.7654136495661062, 0.21048126690934182, 0.0, 0.0]
+637  [main] INFO  CV  - New Consensus Values: [0.7630049826461113, 0.12266697719072843, 0.7655616087448982, 0.21009841637225005, 0.0, 0.0]
+637  [main] INFO  CV  - New Consensus Values: [0.7631041912254177, 0.12236930477145933, 0.7657089422932541, 0.20972084719548562, 0.0, 0.0]
+638  [main] INFO  CV  - New Consensus Values: [0.7632033642006592, 0.12207527785937129, 0.7658556483913591, 0.2093484852938651, 0.0, 0.0]
+638  [main] INFO  CV  - New Consensus Values: [0.7633024936300055, 0.12178485180899999, 0.7660017253262025, 0.2089812576309156, 0.0, 0.0]
+638  [main] INFO  CV  - New Consensus Values: [0.7634015717210654, 0.1214979825216408, 0.7661471714906956, 0.20861909220336244, 0.0, 0.0]
+638  [main] INFO  CV  - New Consensus Values: [0.7635005908311825, 0.12121462643865323, 0.7662919853832836, 0.20826191802647567, 0.0, 0.0]
+638  [main] INFO  CV  - New Consensus Values: [0.7635995434676411, 0.1209347405348484, 0.7664361656074961, 0.2079096651198117, 0.0, 0.0]
+638  [main] INFO  CV  - New Consensus Values: [0.7636984222872771, 0.12065828231195473, 0.7665797108710254, 0.20756226449309953, 0.0, 0.0]
+638  [main] INFO  CV  - New Consensus Values: [0.7637972200953254, 0.12038520979216509, 0.7667226199842414, 0.20721964813219174, 0.0, 0.0]
+649  [main] INFO  CV  - New Consensus Values: [0.763895929843593, 0.12011548151176246, 0.7668648918581923, 0.20688174898510553, 0.0, 0.0]
+649  [main] INFO  CV  - New Consensus Values: [0.7639945446281686, 0.11984905651482539, 0.7670065255022556, 0.20654850094823146, 0.0, 0.0]
+649  [main] INFO  CV  - New Consensus Values: [0.7640930576869037, 0.11958589434700619, 0.7671475200216336, 0.2062198388527732, 0.0, 0.0]
+650  [main] INFO  CV  - New Consensus Values: [0.7641914623968677, 0.11932595504939046, 0.7672878746148104, 0.20589569845143885, 0.0, 0.0]
+650  [main] INFO  CV  - New Consensus Values: [0.7642897522719022, 0.11906919915242778, 0.7674275885711038, 0.20557601640538664, 0.0, 0.0]
+651  [main] INFO  CV  - New Consensus Values: [0.7643879209603298, 0.11881558766994006, 0.7675666612683553, 0.20526073027139016, 0.0, 0.0]
+651  [main] INFO  CV  - New Consensus Values: [0.7644859622428279, 0.11856508209320182, 0.7665166253995104, 0.20376131171791734, 0.0, 0.0]
+651  [main] INFO  CV  - New Consensus Values: [0.7642464171761303, 0.11831764438509243, 0.7650610589954736, 0.20169255211036027, 0.0, 0.0]
+651  [main] INFO  CV  - New Consensus Values: [0.7636418420060425, 0.11807323697432055, 0.7637685686233071, 0.19968114184351368, 0.0, 0.0]
+651  [main] INFO  CV  - New Consensus Values: [0.7628739386738046, 0.11783182274972008, 0.7628304259525361, 0.1980884161474459, 0.0, 0.0]
+651  [main] INFO  CV  - New Consensus Values: [0.7621772988049509, 0.11759336505461374, 0.7622314589775223, 0.19702172461695053, 0.0, 0.0]
+651  [main] INFO  CV  - New Consensus Values: [0.7616971158398519, 0.1173578276812489, 0.7618919812859328, 0.1964106596877581, 0.0, 0.0]
+651  [main] INFO  CV  - New Consensus Values: [0.7614640557257962, 0.11712517486529819, 0.7617362117222041, 0.1960995843570156, 0.0, 0.0]
+651  [main] INFO  CV  - New Consensus Values: [0.7614290149191338, 0.11689537128042916, 0.7617066813428389, 0.1959243016674844, 0.0, 0.0]
+653  [main] INFO  CV  - New Consensus Values: [0.7615125048361528, 0.11666838203294143, 0.7617578066876199, 0.19575877122239405, 0.0, 0.0]
+654  [main] INFO  CV  - New Consensus Values: [0.7616412583627058, 0.11644417265646682, 0.7618498320760801, 0.19553192222798213, 0.0, 0.0]
+654  [main] INFO  CV  - New Consensus Values: [0.7617649209982533, 0.11622270910673686, 0.7619489191681107, 0.19522269621671612, 0.0, 0.0]
+654  [main] INFO  CV  - New Consensus Values: [0.7618575796318325, 0.11600395775641381, 0.7620305228578991, 0.19484388267053174, 0.0, 0.0]
+654  [main] INFO  CV  - New Consensus Values: [0.7619119166350034, 0.11578788538998401, 0.7620817883734073, 0.1944238459750284, 0.0, 0.0]
+654  [main] INFO  CV  - New Consensus Values: [0.7619318637428366, 0.11557445919871347, 0.7621009275721365, 0.19399194159452854, 0.0, 0.0]
+654  [main] INFO  CV  - New Consensus Values: [0.7619265869079482, 0.11536364677566814, 0.7620940099259599, 0.19356995864746449, 0.0, 0.0]
+654  [main] INFO  CV  - New Consensus Values: [0.7619064524535186, 0.1151554161107921, 0.7620707899277422, 0.1931693086785489, 0.0, 0.0]
+654  [main] INFO  CV  - New Consensus Values: [0.7618806624941149, 0.114949735586047, 0.7620410917666209, 0.19279225375258843, 0.0, 0.0]
+654  [main] INFO  CV  - New Consensus Values: [0.7618560778800981, 0.11474657397061223, 0.7620125458339658, 0.19243510856455487, 0.0, 0.0]
+654  [main] INFO  CV  - New Consensus Values: [0.7618368626112356, 0.11454590041614043, 0.7619897398683576, 0.1920917023508036, 0.0, 0.0]
+654  [main] INFO  CV  - New Consensus Values: [0.7618246966562692, 0.11434768445207576, 0.7619744128800751, 0.19175604971230648, 0.0, 0.0]
+654  [main] INFO  CV  - New Consensus Values: [0.7618193459186328, 0.11415189598102644, 0.7619662018487963, 0.1914238429057255, 0.0, 0.0]
+654  [main] INFO  CV  - New Consensus Values: [0.761819386921454, 0.1139585052741949, 0.761963532727704, 0.19109286270784814, 0.0, 0.0]
+654  [main] INFO  CV  - New Consensus Values: [0.7618229067902186, 0.11376748296686261, 0.7619643999691371, 0.19076265624502525, 0.0, 0.0]
+655  [main] INFO  CV  - New Consensus Values: [0.7618280516405258, 0.11357880005393284, 0.7619669201633638, 0.1904338799775542, 0.0, 0.0]
+655  [main] INFO  CV  - New Consensus Values: [0.7618333654553707, 0.11339242788552616, 0.7619696434762854, 0.19010762692967959, 0.0, 0.0]
+655  [main] INFO  CV  - New Consensus Values: [0.7618379248085277, 0.11320833816262901, 0.761971660970361, 0.18978492565604835, 0.0, 0.0]
+655  [main] INFO  CV  - New Consensus Values: [0.7618413166160207, 0.1130265029327975, 0.7619725681053406, 0.18946647229439506, 0.0, 0.0]
+655  [main] INFO  CV  - New Consensus Values: [0.7618435223943008, 0.11284689458591401, 0.7619723467524855, 0.18915256811750908, 0.0, 0.0]
+655  [main] INFO  CV  - New Consensus Values: [0.7618447683272459, 0.11266948584999335, 0.7619712187456648, 0.18884319141480205, 0.0, 0.0]
+656  [main] INFO  CV  - New Consensus Values: [0.7618453846975873, 0.11249424978704273, 0.7619695092638837, 0.18853812672900488, 0.0, 0.0]
+656  [main] INFO  CV  - New Consensus Values: [0.7618456992718278, 0.11232115978897042, 0.7619675423434573, 0.18823709190198024, 0.0, 0.0]
+656  [main] INFO  CV  - New Consensus Values: [0.7618459726563023, 0.11215018957354735, 0.7619655765414989, 0.1879398294326052, 0.0, 0.0]
+656  [main] INFO  CV  - New Consensus Values: [0.7618463720745393, 0.11198131318041428, 0.7619637781092938, 0.1876461526131093, 0.0, 0.0]
+656  [main] INFO  CV  - New Consensus Values: [0.7618469737965666, 0.11181450496714072, 0.7619622227247558, 0.18735595321238563, 0.0, 0.0]
+656  [main] INFO  CV  - New Consensus Values: [0.7618477826371406, 0.11164973960533293, 0.7619609145795714, 0.1870691849863686, 0.0, 0.0]
+656  [main] INFO  CV  - New Consensus Values: [0.7618487581025633, 0.11148699207678549, 0.7619598124166485, 0.18678583774172605, 0.0, 0.0]
+656  [main] INFO  CV  - New Consensus Values: [0.7618498394942866, 0.11132623766968296, 0.7619588546884175, 0.1865059129556614, 0.0, 0.0]
+656  [main] INFO  CV  - New Consensus Values: [0.7618509654375228, 0.11116745197485008, 0.7619579791718021, 0.1862294068469971, 0.0, 0.0]
+656  [main] INFO  CV  - New Consensus Values: [0.7618520861265748, 0.11101061088204263, 0.7619571352653475, 0.18595630227212087, 0.0, 0.0]
+656  [main] INFO  CV  - New Consensus Values: [0.7618531686554412, 0.11085569057628739, 0.7619562893290288, 0.18568656785498458, 0.0, 0.0]
+656  [main] INFO  CV  - New Consensus Values: [0.7618541970171245, 0.11070266753426619, 0.7619554246688247, 0.18542016148923907, 0.0, 0.0]
+656  [main] INFO  CV  - New Consensus Values: [0.7618551687991039, 0.11055151852074438, 0.7619545382133577, 0.18515703539371842, 0.0, 0.0]
+656  [main] INFO  CV  - New Consensus Values: [0.7618560904804255, 0.11040222058504259, 0.7619536357984422, 0.1848971406876126, 0.0, 0.0]
+656  [main] INFO  CV  - New Consensus Values: [0.7618569727857497, 0.11025475105755105, 0.7619527275162793, 0.1846404304502935, 0.0, 0.0]
+657  [main] INFO  CV  - New Consensus Values: [0.7618578269862667, 0.11010908754628852, 0.761951824016248, 0.18438686108242283, 0.0, 0.0]
+657  [main] INFO  CV  - New Consensus Values: [0.7618586625119136, 0.10996520793350253, 0.7619509341184069, 0.18413639232242676, 0.0, 0.0]
+657  [main] INFO  CV  - New Consensus Values: [0.7618594858423382, 0.10982309037230856, 0.7619500637052691, 0.18388898648483273, 0.0, 0.0]
+657  [main] INFO  CV  - New Consensus Values: [0.7618603004049935, 0.1096827132833755, 0.7619492156198076, 0.18364460745563577, 0.0, 0.0]
+657  [main] INFO  CV  - New Consensus Values: [0.7618611071145216, 0.10954405535164849, 0.7619483902041837, 0.18340321981737467, 0.0, 0.0]
+657  [main] INFO  CV  - New Consensus Values: [0.7618619052014187, 0.10940709552311098, 0.7619475861276512, 0.18316478828274185, 0.0, 0.0]
+657  [main] INFO  CV  - New Consensus Values: [0.7618626930558116, 0.1092718130015894, 0.7619468012297289, 0.1829292774561078, 0.0, 0.0]
+657  [main] INFO  CV  - New Consensus Values: [0.7618634689141712, 0.10913818724559413, 0.7619460332065241, 0.18269665184567582, 0.0, 0.0]
+660  [main] INFO  CV  - New Consensus Values: [0.7618642313136365, 0.10900619796520201, 0.7619452800648122, 0.1824668760143717, 0.0, 0.0]
+667  [main] INFO  CV  - New Consensus Values: [0.7618649793132126, 0.10887582511897483, 0.761944540343052, 0.18223991476795373, 0.0, 0.0]
+671  [main] INFO  CV  - New Consensus Values: [0.7618657125273092, 0.10874704891091495, 0.7619438131447487, 0.18201573331215037, 0.0, 0.0]
+671  [main] INFO  CV  - New Consensus Values: [0.7618664310366532, 0.10861984978746086, 0.7619430980491811, 0.18179429734814181, 0.0, 0.0]
+671  [main] INFO  CV  - New Consensus Values: [0.7618671352409058, 0.10849420843451885, 0.7619423949638262, 0.18157557310546757, 0.0, 0.0]
+671  [main] INFO  CV  - New Consensus Values: [0.7618678257042077, 0.10837010577452803, 0.761941703969712, 0.18135952732877314, 0.0, 0.0]
+671  [main] INFO  CV  - New Consensus Values: [0.7618685030267075, 0.10824752296356495, 0.7619410251927662, 0.18114612724029122, 0.0, 0.0]
+671  [main] INFO  CV  - New Consensus Values: [0.7618691677573916, 0.10812644138848336, 0.761940358716472, 0.1809353404971701, 0.0, 0.0]
+671  [main] INFO  CV  - New Consensus Values: [0.7618698203495644, 0.10800684266408503, 0.7619397045371846, 0.18072713515604452, 0.0, 0.0]
+671  [main] INFO  CV  - New Consensus Values: [0.7618704611514275, 0.10788870863033077, 0.7619390625545501, 0.18052147965000032, 0.0, 0.0]
+671  [main] INFO  CV  - New Consensus Values: [0.7618710904201923, 0.10777202134958243, 0.7619384325854642, 0.1803183427775681, 0.0, 0.0]
+671  [main] INFO  CV  - New Consensus Values: [0.7618717083479557, 0.10765676310387853, 0.761937814389795, 0.1801176937003073, 0.0, 0.0]
+671  [main] INFO  CV  - New Consensus Values: [0.761872315089758, 0.10754291639224434, 0.7619372076982901, 0.17991950194470846, 0.0, 0.0]
+672  [main] INFO  CV  - New Consensus Values: [0.7618729107874724, 0.10743046392803457, 0.7619366122363215, 0.17972373740480738, 0.0, 0.0]
+672  [main] INFO  CV  - New Consensus Values: [0.7618734955864314, 0.1073193886363079, 0.7619360277403663, 0.17953037034328365, 0.0, 0.0]
+672  [main] INFO  CV  - New Consensus Values: [0.7618740696443015, 0.10720967365123497, 0.7619354539667427, 0.179339371390171, 0.0, 0.0]
+672  [main] INFO  CV  - New Consensus Values: [0.7618746331334368, 0.10710130231353825, 0.761934890693823, 0.17915071153935866, 0.0, 0.0]
+672  [main] INFO  CV  - New Consensus Values: [0.7618751862387497, 0.10699425816795978, 0.761934337719771, 0.178964362143583, 0.0, 0.0]
+672  [main] INFO  CV  - New Consensus Values: [0.7618757291532431, 0.10688852496076658, 0.7619337948579398, 0.17878029490874375, 0.0, 0.0]
+672  [main] INFO  CV  - New Consensus Values: [0.7618762620729888, 0.10678408663727813, 0.761933261931721, 0.17859848188821228, 0.0, 0.0]
+672  [main] INFO  CV  - New Consensus Values: [0.7618767851927627, 0.10668092733943205, 0.761932738770051, 0.178418895477533, 0.0, 0.0]
+675  [main] INFO  CV  - New Consensus Values: [0.7618772987029562, 0.10657903140337512, 0.7619322252041972, 0.17824150840965938, 0.0, 0.0]
+675  [main] INFO  CV  - New Consensus Values: [0.7618778027878942, 0.10647838335708482, 0.7619317210659531, 0.17806629375066865, 0.0, 0.0]
+675  [main] INFO  CV  - New Consensus Values: [0.7618782976253657, 0.10637896791801944, 0.7619312261870463, 0.1778932248958134, 0.0, 0.0]
+675  [main] INFO  CV  - New Consensus Values: [0.7618787833870054, 0.10628076999079829, 0.7619307403994038, 0.17772227556574777, 0.0, 0.0]
+675  [main] INFO  CV  - New Consensus Values: [0.761879260239138, 0.10618377466490932, 0.7619302635358771, 0.17755341980280523, 0.0, 0.0]
+675  [main] INFO  CV  - New Consensus Values: [0.7618797283437527, 0.10608796721244548, 0.7619297954311044, 0.17738663196725188, 0.0, 0.0]
+676  [main] INFO  CV  - New Consensus Values: [0.761880187859378, 0.10599333308586763, 0.7619293359222706, 0.1772218867334891, 0.0, 0.0]
+676  [main] INFO  CV  - New Consensus Values: [0.7618806389417306, 0.1058998579157964, 0.761928884849649, 0.1770591590862323, 0.0, 0.0]
+676  [main] INFO  CV  - New Consensus Values: [0.7618810817441124, 0.10580752750882956, 0.7619284420568871, 0.1768984243166781, 0.0, 0.0]
+676  [main] INFO  CV  - New Consensus Values: [0.7618815164175784, 0.10571632784538895, 0.7619280073910701, 0.17673965801870142, 0.0, 0.0]
+676  [main] INFO  CV  - New Consensus Values: [0.7618819431109441, 0.10562624507758832, 0.7619275807026236, 0.17658283608509784, 0.0, 0.0]
+676  [main] INFO  CV  - New Consensus Values: [0.7618823619707015, 0.10553726552713284, 0.7619271618451258, 0.17642793470388338, 0.0, 0.0]
+676  [main] INFO  CV  - New Consensus Values: [0.7618827731409026, 0.1054493756832416, 0.7619267506750926, 0.17627493035466735, 0.0, 0.0]
+676  [main] INFO  CV  - New Consensus Values: [0.7618831767630585, 0.10536256220059734, 0.7619263470517765, 0.17612379980507775, 0.0, 0.0]
+676  [main] INFO  CV  - New Consensus Values: [0.7618835729760747, 0.10527681189731755, 0.7619259508370059, 0.17597452010723583, 0.0, 0.0]
+676  [main] INFO  CV  - New Consensus Values: [0.761883961916232, 0.10519211175295519, 0.7619255618950701, 0.17582706859428704, 0.0, 0.0]
+676  [main] INFO  CV  - New Consensus Values: [0.7618843437172087, 0.10510844890652114, 0.7619251800926489, 0.17568142287696858, 0.0, 0.0]
+677  [main] INFO  CV  - New Consensus Values: [0.7618847185101315, 0.10502581065453066, 0.761924805298771, 0.17553756084021085, 0.0, 0.0]
+677  [main] INFO  CV  - New Consensus Values: [0.7618850864236438, 0.10494418444907451, 0.7619244373847932, 0.17539546063979067, 0.0, 0.0]
+677  [main] INFO  CV  - New Consensus Values: [0.7618854475839797, 0.1048635578959148, 0.7619240762243853, 0.1752551006990102, 0.0, 0.0]
+677  [main] INFO  CV  - New Consensus Values: [0.7618858021150345, 0.10478391875260165, 0.7619237216935151, 0.17511645970541728, 0.0, 0.0]
+677  [main] INFO  CV  - New Consensus Values: [0.7618861501384296, 0.10470525492661473, 0.7619233736704266, 0.17497951660757138, 0.0, 0.0]
+677  [main] INFO  CV  - New Consensus Values: [0.7618864917735662, 0.10462755447352823, 0.7619230320356116, 0.17484425061184133, 0.0, 0.0]
+677  [main] INFO  CV  - New Consensus Values: [0.7618868271376716, 0.10455080559519507, 0.7619226966717735, 0.17471064117925092, 0.0, 0.0]
+677  [main] INFO  CV  - New Consensus Values: [0.7618871563458397, 0.10447499663795742, 0.7619223674637864, 0.17457866802235777, 0.0, 0.0]
+677  [main] INFO  CV  - New Consensus Values: [0.7618874795110658, 0.10440011609087639, 0.7619220442986521, 0.17444831110217127, 0.0, 0.0]
+677  [main] INFO  CV  - New Consensus Values: [0.7618877967442804, 0.10432615258398378, 0.7619217270654562, 0.17431955062511278, 0.0, 0.0]
+677  [main] INFO  CV  - New Consensus Values: [0.7618881081543822, 0.1042530948865562, 0.7619214156553242, 0.17419236704000823, 0.0, 0.0]
+677  [main] INFO  CV  - New Consensus Values: [0.7618884138482713, 0.10418093190540974, 0.7619211099613807, 0.17406674103512287, 0.0, 0.0]
+677  [main] INFO  CV  - New Consensus Values: [0.7618887139308834, 0.10410965268321551, 0.7619208098787098, 0.17394265353522467, 0.0, 0.0]
+678  [main] INFO  CV  - New Consensus Values: [0.761889008505225, 0.10403924639683522, 0.7619205153043183, 0.1738200856986928, 0.0, 0.0]
+678  [main] INFO  CV  - New Consensus Values: [0.7618892976724084, 0.10396970235568011, 0.7619202261371003, 0.17369901891465492, 0.0, 0.0]
+678  [main] INFO  CV  - New Consensus Values: [0.761889581531687, 0.1039010100000839, 0.7619199422778034, 0.1735794348001582, 0.0, 0.0]
+678  [main] INFO  CV  - New Consensus Values: [0.761889860180491, 0.10383315889970213, 0.7619196636289945, 0.1734613151973825, 0.0, 0.0]
+678  [main] INFO  CV  - New Consensus Values: [0.7618901337144611, 0.10376613875192829, 0.761919390095029, 0.1733446421708802, 0.0, 0.0]
+678  [main] INFO  CV  - New Consensus Values: [0.7618904022274824, 0.10369993938032859, 0.7619191215820171, 0.17322939800485493, 0.0, 0.0]
+678  [main] INFO  CV  - New Consensus Values: [0.7618906658117169, 0.10363455073309678, 0.7619188579977932, 0.17311556520046953, 0.0, 0.0]
+678  [main] INFO  CV  - New Consensus Values: [0.7618909245576356, 0.10356996288152828, 0.7619185992518839, 0.1730031264731901, 0.0, 0.0]
+678  [main] INFO  CV  - New Consensus Values: [0.7618911785540489, 0.10350616601851291, 0.7619183452554771, 0.172892064750163, 0.0, 0.0]
+678  [main] INFO  CV  - New Consensus Values: [0.761891427888138, 0.10344315045704493, 0.7619180959213914, 0.17278236316761791, 0.0, 0.0]
+679  [main] INFO  CV  - New Consensus Values: [0.7618916726454844, 0.10338090662875146, 0.7619178511640461, 0.17267400506831138, 0.0, 0.0]
+679  [main] INFO  CV  - New Consensus Values: [0.7618919129100983, 0.10331942508244284, 0.7619176108994317, 0.1725669739989963, 0.0, 0.0]
+679  [main] INFO  CV  - New Consensus Values: [0.7618921487644477, 0.10325869648267424, 0.7619173750450804, 0.17246125370792548, 0.0, 0.0]
+679  [main] INFO  CV  - New Consensus Values: [0.7618923802894878, 0.10319871160832873, 0.7619171435200384, 0.17235682814237915, 0.0, 0.0]
+679  [main] INFO  CV  - New Consensus Values: [0.7618926075646868, 0.10313946135121796, 0.7619169162448378, 0.17225368144623232, 0.0, 0.0]
+679  [main] INFO  CV  - New Consensus Values: [0.761892830668054, 0.10308093671469999, 0.7619166931414693, 0.1721517979575459, 0.0, 0.0]
+679  [main] INFO  CV  - New Consensus Values: [0.7618930496761672, 0.10302312881231084, 0.7619164741333553, 0.17205116220618727, 0.0, 0.0]
+679  [main] INFO  CV  - New Consensus Values: [0.7618932646641985, 0.10296602886641727, 0.7619162591453238, 0.17195175891148068, 0.0, 0.0]
+679  [main] INFO  CV  - New Consensus Values: [0.7618934757059398, 0.1029096282068832, 0.7619160481035829, 0.1718535729798898, 0.0, 0.0]
+684  [main] INFO  CV  - New Consensus Values: [0.7618936828738282, 0.1028539182697527, 0.7619158409356948, 0.17175658950272346, 0.0, 0.0]
+686  [main] INFO  CV  - New Consensus Values: [0.7618938862389718, 0.10279889059594957, 0.7619156375705514, 0.17166079375387483, 0.0, 0.0]
+686  [main] INFO  CV  - New Consensus Values: [0.7618940858711732, 0.10274453682999507, 0.7619154379383503, 0.1715661711875805, 0.0, 0.0]
+686  [main] INFO  CV  - New Consensus Values: [0.761894281838954, 0.10269084871873588, 0.7619152419705697, 0.17147270743621792, 0.0, 0.0]
+686  [main] INFO  CV  - New Consensus Values: [0.7618944742095776, 0.10263781811009373, 0.7619150495999463, 0.17138038830811933, 0.0, 0.0]
+686  [main] INFO  CV  - New Consensus Values: [0.7618946630490727, 0.10258543695182595, 0.7619148607604512, 0.17128919978541748, 0.0, 0.0]
+686  [main] INFO  CV  - New Consensus Values: [0.7618948484222565, 0.10253369729030368, 0.7619146753872675, 0.1711991280219183, 0.0, 0.0]
+686  [main] INFO  CV  - New Consensus Values: [0.761895030392756, 0.10248259126930341, 0.7619144934167679, 0.1711101593409968, 0.0, 0.0]
+686  [main] INFO  CV  - New Consensus Values: [0.7618952090230302, 0.10243211112881465, 0.7619143147864934, 0.17102228023352392, 0.0, 0.0]
+687  [main] INFO  CV  - New Consensus Values: [0.7618953843743922, 0.10238224920386241, 0.7619141394351313, 0.1709354773558131, 0.0, 0.0]
+687  [main] INFO  CV  - New Consensus Values: [0.7618955565070292, 0.10233299792334082, 0.7619139673024943, 0.17084973752759097, 0.0, 0.0]
+687  [main] INFO  CV  - New Consensus Values: [0.7618957254800236, 0.10228434980886598, 0.7619137983295, 0.17076504773000142, 0.0, 0.0]
+687  [main] INFO  CV  - New Consensus Values: [0.7618958913513733, 0.10223629747363969, 0.7619136324581504, 0.17068139510362532, 0.0, 0.0]
+687  [main] INFO  CV  - New Consensus Values: [0.7618960541780115, 0.1021888336213271, 0.7619134696315122, 0.1705987669465307, 0.0, 0.0]
+687  [main] INFO  CV  - New Consensus Values: [0.7618962140158271, 0.10214195104495045, 0.7619133097936966, 0.1705171507123424, 0.0, 0.0]
+690  [main] INFO  CV  - New Consensus Values: [0.7618963709196819, 0.10209564262579272, 0.761913152889842, 0.17043653400833467, 0.0, 0.0]
+690  [main] INFO  CV  - New Consensus Values: [0.7618965249434313, 0.10204990133231817, 0.7619129988660924, 0.17035690459355404, 0.0, 0.0]
+690  [main] INFO  CV  - New Consensus Values: [0.7618966761399424, 0.10200472021910427, 0.7619128476695813, 0.1702782503769567, 0.0, 0.0]
+690  [main] INFO  CV  - New Consensus Values: [0.7618968245611114, 0.10196009242578695, 0.7619126992484123, 0.17020055941557594, 0.0, 0.0]
+690  [main] INFO  CV  - New Consensus Values: [0.7618969702578823, 0.10191601117601971, 0.7619125535516414, 0.1701238199127079, 0.0, 0.0]
+690  [main] INFO  CV  - New Consensus Values: [0.7618971132802635, 0.1018724697764427, 0.7619124105292602, 0.17004802021611656, 0.0, 0.0]
+690  [main] INFO  CV  - New Consensus Values: [0.761897253677346, 0.1018294616156685, 0.7619122701321778, 0.16997314881626835, 0.0, 0.0]
+690  [main] INFO  CV  - New Consensus Values: [0.761897391497319, 0.10178698016327711, 0.7619121323122046, 0.16989919434458503, 0.0, 0.0]
+690  [main] INFO  CV  - New Consensus Values: [0.761897526787488, 0.10174501896882468, 0.7619119970220355, 0.1698261455717159, 0.0, 0.0]
+690  [main] INFO  CV  - New Consensus Values: [0.7618976595942897, 0.10170357166086408, 0.761911864215234, 0.16975399140582986, 0.0, 0.0]
+690  [main] INFO  CV  - New Consensus Values: [0.7618977899633081, 0.10166263194597772, 0.7619117338462156, 0.16968272089093947, 0.0, 0.0]
+690  [main] INFO  CV  - New Consensus Values: [0.7618979179392912, 0.10162219360782158, 0.7619116058702324, 0.16961232320522765, 0.0, 0.0]
+690  [main] INFO  CV  - New Consensus Values: [0.761898043566165, 0.10158225050618176, 0.7619114802433586, 0.1695427876594093, 0.0, 0.0]
+690  [main] INFO  CV  - New Consensus Values: [0.7618981668870494, 0.1015427965760408, 0.7619113569224744, 0.16947410369511193, 0.0, 0.0]
+691  [main] INFO  CV  - New Consensus Values: [0.7618982879442727, 0.10150382582665848, 0.7619112358652508, 0.16940626088326333, 0.0, 0.0]
+691  [main] INFO  CV  - New Consensus Values: [0.7618984067793868, 0.10146533234066091, 0.7619111170301368, 0.1693392489225154, 0.0, 0.0]
+691  [main] INFO  CV  - New Consensus Values: [0.76189852343318, 0.10142731027314257, 0.7619110003763436, 0.16927305763767692, 0.0, 0.0]
+691  [main] INFO  CV  - New Consensus Values: [0.7618986379456926, 0.10138975385077931, 0.7619108858638309, 0.16920767697816988, 0.0, 0.0]
+702  [main] INFO  CV  - New Consensus Values: [0.7618987503562297, 0.10135265737095077, 0.7619107734532939, 0.16914309701650282, 0.0, 0.0]
+702  [main] INFO  CV  - New Consensus Values: [0.7618988607033744, 0.10131601520087548, 0.7619106631061493, 0.1690793079467642, 0.0, 0.0]
+702  [main] INFO  CV  - New Consensus Values: [0.7618989690250023, 0.10127982177675447, 0.7619105547845214, 0.16901630008312982, 0.0, 0.0]
+702  [main] INFO  CV  - New Consensus Values: [0.7618990753582935, 0.10124407160292659, 0.76191044845123, 0.1689540638583968, 0.0, 0.0]
+702  [main] INFO  CV  - New Consensus Values: [0.7618991797397457, 0.10120875925103588, 0.7619103440697776, 0.16889258982253072, 0.0, 0.0]
+702  [main] INFO  CV  - New Consensus Values: [0.7618992822051867, 0.10117387935920455, 0.7619102416043367, 0.16883186864122532, 0.0, 0.0]
+702  [main] INFO  CV  - New Consensus Values: [0.7618993827897863, 0.10113942663122037, 0.7619101410197372, 0.16877189109449273, 0.0, 0.0]
+702  [main] INFO  CV  - New Consensus Values: [0.7618994815280692, 0.10110539583573239, 0.7619100422814543, 0.1687126480752555, 0.0, 0.0]
+702  [main] INFO  CV  - New Consensus Values: [0.761899578453926, 0.10107178180545695, 0.7619099453555978, 0.16865413058797124, 0.0, 0.0]
+702  [main] INFO  CV  - New Consensus Values: [0.761899673600625, 0.10103857943639191, 0.7619098502088988, 0.16859632974726121, 0.0, 0.0]
+703  [main] INFO  CV  - New Consensus Values: [0.7618997670008248, 0.10100578368704292, 0.7619097568086991, 0.16853923677656496, 0.0, 0.0]
+703  [main] INFO  CV  - New Consensus Values: [0.7618998586865834, 0.100973389577657, 0.7619096651229403, 0.16848284300680433, 0.0, 0.0]
+703  [main] INFO  CV  - New Consensus Values: [0.761899948689371, 0.10094139218946678, 0.7619095751201527, 0.1684271398750697, 0.0, 0.0]
+703  [main] INFO  CV  - New Consensus Values: [0.7619000370400801, 0.10090978666394346, 0.7619094867694436, 0.16837211892331844, 0.0, 0.0]
+703  [main] INFO  CV  - New Consensus Values: [0.7619001237690358, 0.10087856820205994, 0.7619094000404877, 0.16831777179709334, 0.0, 0.0]
+703  [main] INFO  CV  - New Consensus Values: [0.7619002089060071, 0.10084773206356067, 0.7619093149035164, 0.16826409024424877, 0.0, 0.0]
+703  [main] INFO  CV  - New Consensus Values: [0.7619002924802158, 0.10081727356624245, 0.7619092313293075, 0.16821106611370165, 0.0, 0.0]
+703  [main] INFO  CV  - New Consensus Values: [0.7619003745203481, 0.10078718808524442, 0.7619091492891752, 0.16815869135419476, 0.0, 0.0]
+703  [main] INFO  CV  - New Consensus Values: [0.7619004550545634, 0.10075747105234445, 0.76190906875496, 0.16810695801306913, 0.0, 0.0]
+703  [main] INFO  CV  - New Consensus Values: [0.761900534110504, 0.10072811795526627, 0.7619089896990197, 0.1680558582350614, 0.0, 0.0]
+703  [main] INFO  CV  - New Consensus Values: [0.7619006117153047, 0.10069912433699445, 0.7619089120942191, 0.1680053842611081, 0.0, 0.0]
+703  [main] INFO  CV  - New Consensus Values: [0.7619006878956023, 0.10067048579509727, 0.7619088359139214, 0.16795552842717193, 0.0, 0.0]
+703  [main] INFO  CV  - New Consensus Values: [0.761900762677545, 0.10064219798105764, 0.7619087611319788, 0.16790628316307224, 0.0, 0.0]
+703  [main] INFO  CV  - New Consensus Values: [0.7619008360868008, 0.10061425659961414, 0.7619086877227229, 0.16785764099133843, 0.0, 0.0]
+703  [main] INFO  CV  - New Consensus Values: [0.7619009081485668, 0.10058665740810722, 0.7619086156609569, 0.16780959452607366, 0.0, 0.0]
+704  [main] INFO  CV  - New Consensus Values: [0.7619009788875769, 0.10055939621583779, 0.7619085449219468, 0.16776213647183472, 0.0, 0.0]
+704  [main] INFO  CV  - New Consensus Values: [0.7619010483281118, 0.10053246888342723, 0.7619084754814119, 0.1677152596225245, 0.0, 0.0]
+704  [main] INFO  CV  - New Consensus Values: [0.7619011164940057, 0.10050587132219187, 0.761908407315518, 0.16766895686029518, 0.0, 0.0]
+704  [main] INFO  CV  - New Consensus Values: [0.7619011834086561, 0.10047959949352021, 0.7619083404008676, 0.16762322115447098, 0.0, 0.0]
+705  [main] INFO  CV  - New Consensus Values: [0.7619012490950305, 0.10045364940826053, 0.7619082747144932, 0.16757804556047745, 0.0, 0.0]
+706  [main] INFO  CV  - New Consensus Values: [0.761901313575675, 0.10042801712611484, 0.7619082102338487, 0.16753342321878759, 0.0, 0.0]
+706  [main] INFO  CV  - New Consensus Values: [0.761901376872722, 0.10040269875504178, 0.7619081469368018, 0.16748934735388232, 0.0, 0.0]
+706  [main] INFO  CV  - New Consensus Values: [0.7619014390078969, 0.10037769045066446, 0.7619080848016268, 0.16744581127322153, 0.0, 0.0]
+706  [main] INFO  CV  - New Consensus Values: [0.7619015000025274, 0.10035298841568593, 0.7619080238069962, 0.16740280836622418, 0.0, 0.0]
+706  [main] INFO  CV  - New Consensus Values: [0.7619015598775489, 0.10032858889931504, 0.7619079639319747, 0.1673603321032682, 0.0, 0.0]
+706  [main] INFO  CV  - New Consensus Values: [0.7619016186535131, 0.10030448819669388, 0.7619079051560106, 0.16731837603469682, 0.0, 0.0]
+706  [main] INFO  CV  - New Consensus Values: [0.7619016763505938, 0.10028068264833845, 0.7619078474589298, 0.16727693378984299, 0.0, 0.0]
+706  [main] INFO  CV  - New Consensus Values: [0.761901732988595, 0.10025716863957992, 0.7619077908209287, 0.16723599907605724, 0.0, 0.0]
+706  [main] INFO  CV  - New Consensus Values: [0.7619017885869568, 0.1002339426000186, 0.761907735222567, 0.16719556567775484, 0.0, 0.0]
+706  [main] INFO  CV  - New Consensus Values: [0.7619018431647628, 0.10021100100298026, 0.7619076806447609, 0.16715562745547125, 0.0, 0.0]
+706  [main] INFO  CV  - New Consensus Values: [0.7619018967407464, 0.10018834036497992, 0.7619076270687772, 0.16711617834493048, 0.0, 0.0]
+706  [main] INFO  CV  - New Consensus Values: [0.7619019493332966, 0.10016595724519409, 0.761907574476227, 0.16707721235612333, 0.0, 0.0]
+707  [main] INFO  CV  - New Consensus Values: [0.7619020009604652, 0.10014384824493826, 0.7619075228490583, 0.16703872357239977, 0.0, 0.0]
+707  [main] INFO  CV  - New Consensus Values: [0.761902051639973, 0.100122010007151, 0.7619074721695505, 0.1670007061495691, 0.0, 0.0]
+707  [main] INFO  CV  - New Consensus Values: [0.7619021013892147, 0.1001004392158834, 0.7619074224203087, 0.1669631543150109, 0.0, 0.0]
+707  [main] INFO  CV  - New Consensus Values: [0.7619021502252662, 0.10007913259579558, 0.7619073735842573, 0.16692606236680266, 0.0, 0.0]
+707  [main] INFO  CV  - New Consensus Values: [0.7619021981648901, 0.10005808691166049, 0.7619073256446333, 0.16688942467284992, 0.0, 0.0]
+707  [main] INFO  CV  - New Consensus Values: [0.761902245224541, 0.10003729896787192, 0.7619072785849826, 0.16685323567003227, 0.0, 0.0]
+707  [main] INFO  CV  - New Consensus Values: [0.7619022914203715, 0.10001676560795898, 0.7619072323891523, 0.16681748986336306, 0.0, 0.0]
+707  [main] INFO  CV  - New Consensus Values: [0.7619023367682376, 0.09999648371410734, 0.7619071870412861, 0.16678218182514673, 0.0, 0.0]
+707  [main] INFO  CV  - New Consensus Values: [0.7619023812837048, 0.09997645020668536, 0.7619071425258189, 0.1667473061941617, 0.0, 0.0]
+707  [main] INFO  CV  - New Consensus Values: [0.7619024249820523, 0.09995666204377773, 0.7619070988274714, 0.16671285767484306, 0.0, 0.0]
+707  [main] INFO  CV  - New Consensus Values: [0.761902467878279, 0.0999371162207214, 0.7619070559312446, 0.1666788310364782, 0.0, 0.0]
+708  [main] INFO  CV  - New Consensus Values: [0.7619025099871085, 0.0999178097696508, 0.761907013822415, 0.1666452211124135, 0.0, 0.0]
+708  [main] INFO  CV  - New Consensus Values: [0.7619025513229941, 0.09989873975904752, 0.7619069724865294, 0.1666120227992722, 0.0, 0.0]
+708  [main] INFO  CV  - New Consensus Values: [0.761902591900124, 0.09987990329329362, 0.7619069319093994, 0.1665792310561763, 0.0, 0.0]
+708  [main] INFO  CV  - New Consensus Values: [0.7619026317324261, 0.09986129751223403, 0.7619068920770976, 0.1665468409039789, 0.0, 0.0]
+708  [main] INFO  CV  - New Consensus Values: [0.7619026708335718, 0.09984291959074033, 0.761906852975952, 0.16651484742451547, 0.0, 0.0]
+708  [main] INFO  CV  - New Consensus Values: [0.7619027092169822, 0.09982476673828344, 0.7619068145925414, 0.16648324575985005, 0.0, 0.0]
+708  [main] INFO  CV  - New Consensus Values: [0.7619027468958323, 0.09980683619850834, 0.7619067769136915, 0.16645203111154064, 0.0, 0.0]
+708  [main] INFO  CV  - New Consensus Values: [0.7619027838830547, 0.09978912524881688, 0.7619067399264691, 0.16642119873991262, 0.0, 0.0]
+708  [main] INFO  CV  - New Consensus Values: [0.7619028201913446, 0.09977163119995261, 0.7619067036181789, 0.16639074396333342, 0.0, 0.0]
+708  [main] INFO  CV  - New Consensus Values: [0.7619028558331647, 0.09975435139559481, 0.761906667976359, 0.16636066215750717, 0.0, 0.0]
+708  [main] INFO  CV  - New Consensus Values: [0.7619028908207487, 0.09973728321195414, 0.7619066329887749, 0.1663309487547703, 0.0, 0.0]
+709  [main] INFO  CV  - New Consensus Values: [0.7619029251661055, 0.09972042405737318, 0.7619065986434183, 0.16630159924339896, 0.0, 0.0]
+709  [main] INFO  CV  - New Consensus Values: [0.7619029588810236, 0.09970377137193344, 0.7619065649285002, 0.16627260916691963, 0.0, 0.0]
+709  [main] INFO  CV  - New Consensus Values: [0.7619029919770751, 0.0996873226270686, 0.7619065318324484, 0.1662439741234389, 0.0, 0.0]
+709  [main] INFO  CV  - New Consensus Values: [0.7619030244656205, 0.09967107532517794, 0.7619064993439031, 0.16621568976497336, 0.0, 0.0]
+709  [main] INFO  CV  - New Consensus Values: [0.7619030563578105, 0.0996550269992478, 0.7619064674517132, 0.16618775179678405, 0.0, 0.0]
+709  [main] INFO  CV  - New Consensus Values: [0.7619030876645921, 0.09963917521247774, 0.7619064361449317, 0.1661601559767301, 0.0, 0.0]
+709  [main] INFO  CV  - New Consensus Values: [0.7619031183967108, 0.09962351755791055, 0.7619064054128131, 0.16613289811462423, 0.0, 0.0]
+709  [main] INFO  CV  - New Consensus Values: [0.7619031485647147, 0.09960805165806479, 0.761906375244809, 0.16610597407159414, 0.0, 0.0]
+709  [main] INFO  CV  - New Consensus Values: [0.7619031781789591, 0.0995927751645772, 0.7619063456305646, 0.1660793797594555, 0.0, 0.0]
+709  [main] INFO  CV  - New Consensus Values: [0.7619032072496087, 0.0995776857578433, 0.761906316559915, 0.16605311114008892, 0.0, 0.0]
+709  [main] INFO  CV  - New Consensus Values: [0.7619032357866414, 0.09956278114666617, 0.7619062880228821, 0.16602716422483052, 0.0, 0.0]
+710  [main] INFO  CV  - New Consensus Values: [0.7619032637998524, 0.09954805906790869, 0.7619062600096712, 0.16600153507386523, 0.0, 0.0]
+710  [main] INFO  CV  - New Consensus Values: [0.7619032912988567, 0.09953351728614963, 0.7619062325106668, 0.16597621979562582, 0.0, 0.0]
+710  [main] INFO  CV  - New Consensus Values: [0.7619033182930932, 0.09951915359334455, 0.7619062055164304, 0.1659512145462043, 0.0, 0.0]
+710  [main] INFO  CV  - New Consensus Values: [0.7619033447918272, 0.09950496580848929, 0.7619061790176964, 0.16592651552876905, 0.0, 0.0]
+710  [main] INFO  CV  - New Consensus Values: [0.7619033708041542, 0.09949095177729182, 0.7619061530053693, 0.16590211899298524, 0.0, 0.0]
+710  [main] INFO  CV  - New Consensus Values: [0.7619033963390026, 0.09947710937184061, 0.761906127470521, 0.1658780212344497, 0.0, 0.0]
+710  [main] INFO  CV  - New Consensus Values: [0.7619034214051369, 0.09946343649028565, 0.7619061024043868, 0.1658542185941244, 0.0, 0.0]
+710  [main] INFO  CV  - New Consensus Values: [0.7619034460111607, 0.09944993105651775, 0.7619060777983631, 0.16583070745778247, 0.0, 0.0]
+710  [main] INFO  CV  - New Consensus Values: [0.7619034701655197, 0.09943659101985235, 0.761906053644004, 0.16580748425546155, 0.0, 0.0]
+710  [main] INFO  CV  - New Consensus Values: [0.7619034938765046, 0.09942341435471949, 0.7619060299330191, 0.16578454546091542, 0.0, 0.0]
+710  [main] INFO  CV  - New Consensus Values: [0.7619035171522542, 0.09941039906035545, 0.7619060066572695, 0.16576188759108618, 0.0, 0.0]
+710  [main] INFO  CV  - New Consensus Values: [0.7619035400007572, 0.09939754316050006, 0.7619059838087664, 0.1657395072055703, 0.0, 0.0]
+711  [main] INFO  org.linqs.psl.reasoner.admm.ADMMReasoner  - Optimization completed in 366 iterations. Primal res.: 0.0029363803240228044, Dual res.: 6.828688034518578E-5
+Global update:
+SAME('A', 'B')=5 updated from 1.0 to 0.0
+SAME('A', 'C')=3 updated from 1.0 to 0.1657395072055703
+SAME('B', 'A')=1 updated from 1.0 to 0.09939754316050006
+SAME('B', 'C')=0 updated from 1.0 to 0.7619035400007572
+SAME('C', 'A')=4 updated from 1.0 to 0.0
+SAME('C', 'B')=2 updated from 1.0 to 0.7619059838087664
+711  [main] INFO  org.linqs.psl.application.inference.MPEInference  - Inference complete. Writing results to Database.
+711  [main] DEBUG org.linqs.psl.application.inference.MPEInference  - Master inference complete.
+711  [main] DEBUG org.linqs.psl.application.inference.MPEInference  - Stats -- Memory (Bytes): 108086312, Terms: 24, Global Variables: 6 Local Variables: 42
+733  [main] INFO  org.linqs.psl.experiments.Transitivity  - Finished inference in 0.264 seconds
+DiscretePredictionStatistics.compare took 1 milliseconds
+ContinuousPredictionStatistics.compare took 0 milliseconds
+778  [main] INFO  org.linqs.psl.experiments.Transitivity  - MSE: 0.6034090066521983
+783  [main] INFO  org.linqs.psl.experiments.Transitivity  - Accuracy 0.3333333333333333, Error 4.0
+785  [main] INFO  org.linqs.psl.experiments.Transitivity  - Positive Class: precision 1.0, recall 0.3333333333333333
+786  [main] INFO  org.linqs.psl.experiments.Transitivity  - Negative Class Stats: precision 0.0, recall 1.0

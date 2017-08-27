@@ -1,8 +1,8 @@
 --- Atoms: 
-SAME('B', 'C') Truth=[0.64]
-SAME('B', 'A') Truth=[0.24]
-SAME('C', 'B') Truth=[0.64]
-SAME('A', 'C') Truth=[0]
+SAME('A', 'C') Truth=[0.17]
 SAME('C', 'A') Truth=[0]
-SAME('A', 'B') Truth=[0.24]
+SAME('C', 'B') Truth=[0.76]
+SAME('B', 'A') Truth=[0.1]
+SAME('B', 'C') Truth=[0.76]
+SAME('A', 'B') Truth=[0]
 # Atoms: 6

@@ -70,9 +70,9 @@ public class Transitivity {
 			this.dataPath = cb.getString('experiment.data.path', 'data');
 			this.outputPath = cb.getString('experiment.output.outputdir', Paths.get('output', this.experimentName).toString());
 
-			this.weightMap["Similar"] = cb.getInteger('model.weights.lived', weightMap["Similar"]);
+			this.weightMap["Similar"] = cb.getInteger('model.weights.similar', weightMap["Similar"]);
 			this.weightMap["Transitivity"] = cb.getInteger('model.weights.transitivity', weightMap["Transitivity"]);
-			this.weightMap["Symmetry"] = cb.getInteger('model.weights.transitivity', weightMap["Symmetry"]);
+			this.weightMap["Symmetry"] = cb.getInteger('model.weights.symmetry', weightMap["Symmetry"]);
 			this.weightMap["Prior"] = cb.getInteger('model.weights.prior', weightMap["Prior"]);
 			this.useTransitivityRule = cb.getBoolean('model.rule.transitivity', false);
 			this.useSymmetryRule = cb.getBoolean('model.rule.symmetry', false);
