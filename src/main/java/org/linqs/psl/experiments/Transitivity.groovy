@@ -107,11 +107,20 @@ public class Transitivity {
 		);
 
 		if (config.useTransitivityRule) {
-			model.add(
+			/*
+            model.add(
 				rule: ( Same(P1,P2) & Same(P2,P3) & (P1-P3) ) >> Same(P1,P3),
 				squared: config.sqPotentials,
 				weight : config.weightMap["Transitivity"]
 			);
+            */
+
+            model.add (
+                rule : "0.5 * SameUser(P1,P2) + 0.5 *  SameUser(P2,P3) = SameUser(P1,P3)", 
+                squared: config.sqPotentials,
+                weight : config.weightMap["Transitivity"]
+            );
+
 		}
 
 		if (config.useSymmetryRule) {
